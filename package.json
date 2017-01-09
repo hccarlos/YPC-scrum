@@ -1,4 +1,21 @@
 {
+ "name": "ypc",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ZakStrassberg/YPC-scrum.git"
+  },
+  "author": "ypc-scrum",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ZakStrassberg/YPC-scrum/issues"
+  },
+  "homepage": "https://github.com/ZakStrassberg/YPC-scrum#readme"
   "dependencies": {
     "angular-route": "^1.6.1",
     "bcryptjs": "^2.4.0",
