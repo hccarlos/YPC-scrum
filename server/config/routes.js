@@ -1,3 +1,14 @@
+
+var fs = require("fs");
+var path = require("path");
+var controllerPath = path.join(__dirname, "./../controllers");
+fs.readdirSync(controllerPath).forEach(function(file) {
+  if(file.indexOf('.js') >= 0) {
+    require(controllerPath + '/' + file);
+    //console.log(file);
+  }
+});
+
 module.exports = function(app){
 	app.post('/dummies/:test', function(req, res){
 		
@@ -7,6 +18,9 @@ module.exports = function(app){
 
 		console.log(req.body);
 		console.log(req.params.test)
-		// mongooseController.getMongooses(req, res);
-	})
+	});
+
+	app.get('/register', function(req, res){
+		
+	});
 }
