@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title><%= post.title %></title>
+</head>
+<body>
+
+<!-- 
+
+	to do list
+	
+	-route for show
+	-check populated fields
+	-confirm links
+
+ -->
+
+<h1><%= post.title %></h1>
+<ul>
+	<li><a href="/admin">Go Back</a></li>
+	<li><a href="/admin">Sign Out</a></li>
+</ul>
+
+<p><%= post.text %></p>
+
+<a href="/admin"><button>Go Back</button></a>
+<a href="/posts/edit/<%= post.id %>"><button>Edit Post</button></a>
+<a href="/posts/delete/<%= post.id %>"><button>Delete Post</button></a>
+
+</body>
+</html>
