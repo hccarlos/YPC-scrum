@@ -1,13 +1,13 @@
 //modules
-let express = require("express");
-let path = require("path");
-let bodyParser = require("body-parser");
-let mysql = require("mysql");
-//let bcrypt = require("bcryptjs");
-let session = require("express-session");
-let crypto = require("crypto");
-let app = express();
-let port = 5000;
+var express = require("express");
+var path = require("path");
+var bodyParser = require("body-parser");
+var mysql = require("mysql");
+//var bcrypt = require("bcryptjs");
+var session = require("express-session");
+var crypto = require("crypto");
+var app = express();
+var port = 5000;
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
@@ -25,7 +25,7 @@ app.use(session({
 
 require('./server/config/routes.js')(app);
 
-let server = app.listen(port, function()
+var server = app.listen(port, function()
 {
 	console.log("listening on port", port);
 });
