@@ -1,5 +1,5 @@
 {
- "name": "ypc",
+  "name": "ypc",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -15,9 +15,10 @@
   "bugs": {
     "url": "https://github.com/ZakStrassberg/YPC-scrum/issues"
   },
-  "homepage": "https://github.com/ZakStrassberg/YPC-scrum#readme"
+  "homepage": "https://github.com/ZakStrassberg/YPC-scrum#readme",
   "dependencies": {
     "angular-route": "^1.6.1",
+    "aws-sdk": "^2.7.21",
     "bcryptjs": "^2.4.0",
     "body-parser": "^1.15.2",
     "crypto": "0.0.3",
