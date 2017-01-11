@@ -1,13 +1,15 @@
-
 var fs = require("fs");
 var path = require("path");
 var controllerPath = path.join(__dirname, "./../controllers");
+var controllers = {};
+
 fs.readdirSync(controllerPath).forEach(function(file) {
   if(file.indexOf('.js') >= 0) {
-    require(controllerPath + '/' + file);
-    //console.log(file);
+    controllers[file.slice(0, (file.length - 3))] = require(path.join(controllerPath, file));
   }
 });
+
+console.log(controllers);
 
 module.exports = function(app){
 	app.post('/dummies/:test', function(req, res){
@@ -20,7 +22,8 @@ module.exports = function(app){
 		console.log(req.params.test)
 	});
 
-	app.get('/register', function(req, res){
-		
-	});
+	//testing to see if the whole chain of files works
+	app.get('/test', controllers.controller_template.test);
+
+	app.get('/registration', controllers.registrationController.regPage);
 }
