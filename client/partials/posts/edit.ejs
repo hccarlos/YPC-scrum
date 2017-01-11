@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Edit <%= post.title %></title>
+</head>
+<body>
+
+<!-- 
+
+	to do list
+
+	-route for edit
+	-check populated fields
+	-confirm links
+
+ -->
+
+<h1>Edit <%= post.title %></h1>
+<ul>
+	<li><a href="/admin">Go Back</a></li>
+	<li><a href="/admin">Sign Out</a></li>
+</ul>
+
+<form action="" method="POST">
+	<label>Blog Post Title</label><br><br>
+	<input type="text" name="title" value="<%= post.title %>"><br><br>
+	<label>Blog Post Text</label><br><br>
+	<textarea rows="10" cols="100" name="text"><%= post.text %></textarea><br><br>
+	<input type="submit" value="Submit">
+</form>
+	<a href="/admin"><button>Go Back</button></a>
+
+</body>
+</html>
