@@ -26,21 +26,23 @@ module.exports = function(app){
 	app.get('/registration', controllers.registrationController.regPage);
 
   // main admin page
-  app.get('/admin', controllers.postsController.admin)
+  app.get('/admin', controllers.adminController.index)
 
   // create new post (GET)
-  app.get('/posts/new', controllers.postsController.new)
+  app.get('/admin/posts/new', controllers.postController.new)
+  // edit post (GET)
+  app.get('/admin/posts/edit/:id', controllers.postController.edit)
+
 
   // add post to db (POST)
   app.post('/posts/create', controllers.postsController.create)
 
   app.get('/posts/:id', controllers.postsController.show)
-  // edit post (GET)
-  app.get('/posts/edit/:id', controllers.postsController.edit)
+  
   // need route to update db entry
-  // app.post('/posts/SOMETHING/:id', controllers.postsController.update)
-  // this goes to the confirm deletion page
-  app.get('/posts/delete/:id', controllers.postsController.delete)
+  app.post('/posts/:id/edit', controllers.postsController.update)
+  // this goes to the confirm deletion page (this will be handled via modal on admin page)
+  // app.get('/posts/delete/:id', controllers.postsController.delete)
   // this actually removes it from the database
-  app.post('/posts/destroy/:id', controllers.postsController.destroy)
+  app.post('/posts/:id/destroy', controllers.postsController.destroy)
 }
