@@ -6,8 +6,7 @@ var connection = mysql.createConnection({
     host     : "localhost",
     user     : "root",
     password : "root",
-    // database : "YPCdb"
-    database: "mydb"
+    database : "YPCdb"
 });
 
 module.exports = connection;
