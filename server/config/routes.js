@@ -9,8 +9,6 @@ fs.readdirSync(controllerPath).forEach(function(file) {
   }
 });
 
-console.log(controllers);
-
 module.exports = function(app){
 	app.post('/dummies/:test', function(req, res){
 		
