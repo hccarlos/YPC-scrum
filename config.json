@@ -1,1 +1,3 @@
-{ "accessKeyId": "AKIAJKC7ETAQIO2WTS2A", "secretAccessKey": "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", "region": "us-west-2" }
+var albumBucketName = 'ypcphotoalbum';
+var bucketRegion = 'us-west-2';
+var IdentityPoolId = 'us-west-2:fd00c370-78fc-4c32-9e5b-127cfa76cdf8';
