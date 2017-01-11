@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Admin Panel</title>
+</head>
+<body>
+<!-- 
+	This is the admin panel. It lists the blog posts in a table 
+-->
+
+<!-- 
+
+	to do list
+
+	-create routes for create/show/edit/delete (RESTful)
+	
+	-create link to form for creating a new blog post
+	-create link to sign out 
+
+	-create link to edit page
+	-double check format for date created time
+	-create link to confirm delete  
+	
+	-double check formatting for ejs templating
+
+
+ -->
+
+<h1>Admin Panel</h1>
+<ul>
+	<li><a href="posts/create.html">Create a new blog post</a></li>
+	<li><a href="../index.html">Sign Out</a></li>
+</ul>
+
+<table class="table">
+	<thead>
+		<th>Post Title</th>
+		<th>Date Created</th>
+		<th>Actions</th>
+	</thead>
+	<tbody>
+	{% for post in posts %}
+		<tr>
+			<td><a href="posts/show.html">{{post.title}}</a></td>
+			<td>{{post.created_at.strftime('%b %-d, %Y')}}</td>
+			<td><a href="posts/edit.html">edit</a> | <a href="posts/delete.html">delete</a></td>
+		</tr>
+	{% endfor %}
+	</tbody>
+</table>
+
+
+</body>
+</html>
