@@ -9,10 +9,13 @@ var doQuery = require('../config/doquery_function.js');
 //the purpose of the callback function is to enable you to modify the results of the query.
 //this is usually not necessary so 99% of the time you shouldn't need a callback at all.
 
+var bcrypt = require("bcryptjs");
+
 module.exports = {
-	test: function(req, res){
-		console.log("model function called successfully");
-		var result = doQuery("select * from users");
+	newUser: function(req, res){
+		console.log(req.body);
+		var hashedPW = bcrypt.hashSync(req.body.pw1);
+		var result = doQuery("insert into users (first_name, last_name, password, email, phone, created_at, updated_at) values ('"+ req.body.first_name + "', '" + req.body.last_name + "', '" + hashedPW + "', '" + req.body.email + "', '" + req.body.phone +", now(), now()')");
 		return result;
 	}
 }

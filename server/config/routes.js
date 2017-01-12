@@ -23,6 +23,7 @@ module.exports = function(app){
 	//testing to see if the whole chain of files works
 	app.get('/test', controllers.controller_template.test);
 
+	//registration page
 	app.get('/registration', controllers.registrationController.regPage);
 
   // main admin page
@@ -45,4 +46,7 @@ module.exports = function(app){
   // app.get('/posts/delete/:id', controllers.postsController.delete)
   // this actually removes it from the database
   app.post('/posts/:id/destroy', controllers.postController.destroy)
+
+	//user submits registration form
+	app.post('/newuser', controllers.registrationController.newUser);
 }
