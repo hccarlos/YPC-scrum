@@ -35,14 +35,14 @@ module.exports = function(app){
 
 
   // add post to db (POST)
-  app.post('/posts/create', controllers.postsController.create)
+  app.post('/posts/create', controllers.postController.create)
 
-  app.get('/posts/:id', controllers.postsController.show)
+  app.get('/posts/:id', controllers.postController.show)
   
   // need route to update db entry
-  app.post('/posts/:id/edit', controllers.postsController.update)
+  app.post('/posts/:id/edit', controllers.postController.update)
   // this goes to the confirm deletion page (this will be handled via modal on admin page)
   // app.get('/posts/delete/:id', controllers.postsController.delete)
   // this actually removes it from the database
-  app.post('/posts/:id/destroy', controllers.postsController.destroy)
+  app.post('/posts/:id/destroy', controllers.postController.destroy)
 }
