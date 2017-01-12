@@ -1,6 +1,6 @@
 //Controller template
 var path = require("path");
-var htmlPath = path.join(__dirname, "./../../client/");
+var htmlPath = path.join(__dirname, "./../../server/");
 var requireFolder = require("./../config/req_folder.js");
 var models = requireFolder("models");
 
@@ -23,7 +23,7 @@ module.exports = {
     // console.log("controller function called successfully");
     // var result = models.model_template.test(req, res);
     // console.log(result);
-    res.render("./partials/admin.ejs", {posts:posts});
+    res.render("./views/admin/admin.ejs", {posts:posts});
   },
   new: function(req, res){
     // take user to create a new blog post page
@@ -40,7 +40,7 @@ module.exports = {
   edit: function(req, res){
     // temporary global variable posts
     var post=posts[req.params.id];
-    res.render("./partials/posts/edit.ejs", {post:post});    
+    res.render("./partials/posts/edit.ejs", {post:post});
   },
   delete: function(req, res){
     // temporary global variable posts
