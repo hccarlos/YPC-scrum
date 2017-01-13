@@ -24,12 +24,20 @@ module.exports = function(app){
 	app.get('/test', controllers.controller_template.test);
 
 	//registration page
+  // ??? WHY DO WE HAVE 2 OF THESE ???
 	app.get('/registration', controllers.registrationController.regPage);
+  app.post('/newuser', controllers.registrationController.newUser);
 
 
   // SHOW POST
   app.get('/posts/:id', controllers.postController.show)
 
+  // need route to update db entry
+  app.post('/posts/:id/edit', controllers.postController.update)
+  // this goes to the confirm deletion page (this will be handled via modal on admin page)
+  // app.get('/posts/delete/:id', controllers.postsController.delete)
+  // this actually removes it from the database
+  app.post('/posts/:id/destroy', controllers.postController.destroy)
 
   // ADMIN ONLY FUNCTIONS:
     // GET REQUESTS ARE HANDLED BY ADMIN CONTROLLER
