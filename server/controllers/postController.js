@@ -40,7 +40,7 @@ module.exports = {
   edit: function(req, res){
     // temporary global variable posts
     var post=posts[req.params.id];
-    res.render("./partials/posts/edit.ejs", {post:post});    
+    res.render("./partials/posts/edit.ejs", {post:post});
   },
   update: function(req, res){
   },
