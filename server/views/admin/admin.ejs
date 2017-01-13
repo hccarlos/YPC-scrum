@@ -4,23 +4,23 @@
 	<title>Admin Panel</title>
 </head>
 <body>
-<!-- 
-	This is the admin panel. It lists the blog posts in a table 
+<!--
+	This is the admin panel. It lists the blog posts in a table
 -->
 
-<!-- 
+<!--
 
 	to do list
 
 	-create routes for create/show/edit/delete (RESTful)
-	
+
 	-create link to form for creating a new blog post
-	-create link to sign out 
+	-create link to sign out
 
 	-create link to edit page
 	-double check format for date created time
-	-create link to confirm delete  
-	
+	-create link to confirm delete
+
 
  -->
 
@@ -42,7 +42,7 @@
 			<td><a href="posts/<%= post.id %>"><%= post.title %></a></td>
 			<td><%= post.created_at %></td>
 			<!-- Zak wants delete to be a modal -->
-			<td><a href="/admin/posts/edit/<%= post.id %>">edit</a> | <a href="#">delete</a></td>
+			<td><a href="/admin/posts/<%= post.id %>/edit">edit</a> | <a href="#">delete</a></td>
 		</tr>
 	<% } %>
 	</tbody>
