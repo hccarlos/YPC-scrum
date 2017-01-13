@@ -20,40 +20,53 @@ module.exports = {
 	newUser: function(req, res){
 		console.log(req.body);
 		var valid = true;
-		var vErrMsgs = [];
+		var validationErrors = [];
 
 		if(req.body.first_name.length < 1)
 		{
 			valid = false;
-			vErrMsgs.push("First name is required.");
+			validationErrors.push("First name is required.");
 		}
 		if(req.body.last_name.length < 1)
 		{
 			valid = false;
-			vErrMsgs.push("Last name is required.");
+			validationErrors.push("Last name is required.");
 		}
 		if(req.body.email.length < 1)
 		{
 			valid = false;
-			vErrMsgs.push("Email is required.");
+			validationErrors.push("Email is required.");
 		}
 
 		if(req.body.pw1 !== req.body.pw2)
 		{
 			valid = false;
-			vErrMsgs.push("Passwords do not match.");
+			validationErrors.push("Passwords do not match.");
 		}
 
 		if(valid === true)
 		{
 			models.registrationModel.newUser(req, res, function(err, rows, fields){
-				res.json({err: err, rows: rows});
+				for(key in err){
+					console.log(key, ":", err[key]);
+					console.log("--");
+				}
+				console.log(err.errno);
+				if(err.errno !== undefined)
+				{
+					switch(err.errno)
+					{
+						case 1062: validationErrors.push("Email address already taken.");
+						break;
+					}
+				}
+				res.json({err: validationErrors, rows: rows});
 			});
 		}
 		else
 		{
 			console.log("Validation failed.");
-			res.json({err: vErrMsgs, rows: undefined});
+			res.json({err: validationErrors, rows: undefined});
 		}
 	}
 };
