@@ -30,7 +30,7 @@ module.exports = function(app){
   app.get('/posts/:id', controllers.postController.show)
 
 
-  // ADMIN PANEL:
+  // ADMIN ONLY FUNCTIONS:
     // GET REQUESTS ARE HANDLED BY ADMIN CONTROLLER
     app.get('/admin', controllers.adminController.index)
     app.get('/admin/posts/new', controllers.adminController.new)

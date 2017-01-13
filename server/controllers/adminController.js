@@ -27,25 +27,28 @@ module.exports = {
   },
   new: function(req, res){
     // take user to create a new blog post page
-    res.render("./partials/posts/create.ejs");
+    res.render("./views/admin/posts/create.ejs");
   },
   create: function(req, res){
     // adding to db
   },
-  show: function(req, res){
-    // temporary global variable posts
-    var post=posts[req.params.id];
-    res.render("./partials/posts/show.ejs", {post:post});
-  },
+  // show: function(req, res){
+  //   // temporary global variable posts
+  //   var post=posts[req.params.id];
+  //   console.log("\n\n\n")
+  //   console.log(htmlPath)
+  //   res.render("./views/admin/posts/show.ejs", {post:post});
+  // },
   edit: function(req, res){
+    console.log("\n\n\n EDIT")
     // temporary global variable posts
     var post=posts[req.params.id];
-    res.render("./partials/posts/edit.ejs", {post:post});
+    res.render("./views/admin/posts/edit.ejs", {post:post});
   },
   delete: function(req, res){
     // temporary global variable posts
     var post=posts[req.params.id];
-    res.render("./partials/posts/delete.ejs", {post:post});
+    res.render("./views/admin/posts/delete.ejs", {post:post});
   },
   destroy: function(req, res){
     // delete from db
