@@ -10,13 +10,18 @@ var models = requireFolder("models");
 //after that you can make the response here in the controller
 
 module.exports = {
-	test: function(req, res){
-		console.log("controller function called successfully");
-		
-		//response inside callback
-		models.model_template.test(req, res, function(){
-			res.send("successfully made it through route->controller->model->response");
-		});
+  login: function(req, res) {
+    // check to see if user with this email exists:
 
-	}
+    // check to see whether their password matches the hashed password
+    // please use bcrypt
+
+    // if successful, send a json object in response that looks like {user_id: user.id}
+
+    // if failed, send json {user_id: nil, errors: [error messages here]}
+    
+  },
+  logout: function(req, res) {
+
+  }
 }

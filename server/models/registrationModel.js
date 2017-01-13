@@ -1,7 +1,5 @@
 //template for a model file
 
-//require these two things to be able to do queries
-var connection = require('../config/mysql.js');
 var doQuery = require('../config/doquery_function.js');
 //the doQuery function is available. it takes a string which is the query, and an optional callback function
 //the callback function takes one argument, rows. it is an array returned from a successful query.
@@ -9,12 +7,18 @@ var doQuery = require('../config/doquery_function.js');
 //the purpose of the callback function is to enable you to modify the results of the query.
 //this is usually not necessary so 99% of the time you shouldn't need a callback at all.
 
-module.exports = {
-	test: function(req, res, callback){
-		console.log("model function called successfully");
+var bcrypt = require("bcryptjs");
 
-		//you can make a query by calling your callback, which you write in the controller.
-		doQuery("select * from users", callback);
+module.exports = {
+	newUser: function(req, res, callback){
+		console.log(req.body.pw1);
+		var salt = bcrypt.genSaltSync(10);
+		var hashedPW = bcrypt.hashSync(req.body.pw1, salt);
+		doQuery("insert into users (first_name, last_name, password, email, created_at, updated_at) values ('"+ req.body.first_name + "', '" + req.body.last_name + "', '" + hashedPW + "', '" + req.body.email +"', now(), now())", callback);
+	},
+
+	checkEmail: function(req, res, callback){
+		doQuery("select id from users where users.email = '" + req.body.email + "'", callback);
 	}
 }
 
