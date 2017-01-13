@@ -11,10 +11,10 @@ fs.readdirSync(controllerPath).forEach(function(file) {
 
 module.exports = function(app){
 	app.post('/dummies/:test', function(req, res){
-		
+
 		// I'm testing the info that I'm getting from my dummy Factory
 		// I console.log the body and the params just to make sure that it's
-		// going through 
+		// going through
 
 		console.log(req.body);
 		console.log(req.params.test)
@@ -25,24 +25,19 @@ module.exports = function(app){
 
 	app.get('/registration', controllers.registrationController.regPage);
 
-  // main admin page
-  app.get('/admin', controllers.adminController.index)
 
-  // create new post (GET)
-  app.get('/admin/posts/new', controllers.postController.new)
-  // edit post (GET)
-  app.get('/admin/posts/edit/:id', controllers.postController.edit)
-
-
-  // add post to db (POST)
-  app.post('/posts/create', controllers.postController.create)
-
+  // SHOW POST
   app.get('/posts/:id', controllers.postController.show)
-  
-  // need route to update db entry
-  app.post('/posts/:id/edit', controllers.postController.update)
-  // this goes to the confirm deletion page (this will be handled via modal on admin page)
-  // app.get('/posts/delete/:id', controllers.postsController.delete)
-  // this actually removes it from the database
-  app.post('/posts/:id/destroy', controllers.postController.destroy)
+
+
+  // ADMIN PANEL:
+    // GET REQUESTS ARE HANDLED BY ADMIN CONTROLLER
+    app.get('/admin', controllers.adminController.index)
+    app.get('/admin/posts/new', controllers.adminController.new)
+    app.get('/admin/posts/:id/edit', controllers.adminController.edit)
+    // POST REQUESTS ARE HANDLED BY THEIR NATIVE CONTROLLERS
+    app.post('/posts/:id/destroy', controllers.adminController.destroy)
+    app.post('/posts/create', controllers.postController.create)
+    app.post('/posts/:id/edit', controllers.postController.update)
+
 }
