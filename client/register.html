@@ -40,7 +40,7 @@
 			}
 			formattedData = formattedData.slice(0, formattedData.length - 1);
 
-			//console.log(formattedData);
+			console.log(formattedData);
 			if(data !== undefined && data !== {}){
 				httpRequest.send(formattedData);
 			}
@@ -67,8 +67,9 @@
 			var data = {
 				first_name: document.forms["regForm"]["first_name"].value,
 				last_name: document.forms["regForm"]["last_name"].value,
-				email: document.forms["regForm"]["email"].value,
-				phone: document.forms["regForm"]["phone"].value
+				pw1: document.forms["regForm"]["pw1"].value,
+				pw2: document.forms["regForm"]["pw2"].value,
+				email: document.forms["regForm"]["email"].value
 			};
 			httpRequest('/newuser', 'POST', data, registerCallback);
 		}
@@ -84,7 +85,6 @@
 			<label>Password:</label><input type="password" name="pw1">
 			<label>Confirm Password:</label><input type="password" name="pw2">
 			<label>Email:</label><input type="email" name="email">
-			<label>Phone:</label><input type="phone" name="phone">
 			<input type="submit" name="submit" value="Sign Up">
 		</form>
 		<br>
