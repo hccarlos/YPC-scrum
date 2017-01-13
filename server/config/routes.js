@@ -49,6 +49,9 @@ module.exports = function(app){
     app.post('/posts/create', controllers.postController.create)
     app.post('/posts/:id/edit', controllers.postController.update)
 
+    app.get('/s3_credentials', controllers.uploadController.credentials)
+    app.get('/upload', controllers.uploadController.index)
+
 
   // these were from a merge commit. keeping here for posterity
   // app.get('/posts/:id', controllers.postController.show)
