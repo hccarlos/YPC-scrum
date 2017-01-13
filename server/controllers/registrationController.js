@@ -18,10 +18,10 @@ module.exports = {
 
 	//user tries to register
 	newUser: function(req, res){
-		//do some validations
 		console.log(req.body);
 		var valid = true;
 		var vErrMsgs = [];
+
 		if(req.body.first_name.length < 1)
 		{
 			valid = false;
@@ -37,27 +37,23 @@ module.exports = {
 			valid = false;
 			vErrMsgs.push("Email is required.");
 		}
-		if(req.body.phone.length < 1)
-		{
-			valid = false;
-			vErrMsgs.push("Phone number is required.");
-		}
-		if(req.body.pw1 !== eq.body.pw2)
+
+		if(req.body.pw1 !== req.body.pw2)
 		{
 			valid = false;
 			vErrMsgs.push("Passwords do not match.");
 		}
 
-
 		if(valid === true)
 		{
-			//models.registrationModel.newUser(req, res)[0].id
-			res.json({err: undefined, id: 0});
+			models.registrationModel.newUser(req, res, function(err, rows, fields){
+				res.json({err: err, rows: rows});
+			});
 		}
 		else
 		{
 			console.log("Validation failed.");
-			res.json({err: vErrMsgs, id: undefined});
+			res.json({err: vErrMsgs, rows: undefined});
 		}
 	}
 };

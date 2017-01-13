@@ -10,10 +10,11 @@ var doQuery = require('../config/doquery_function.js');
 //this is usually not necessary so 99% of the time you shouldn't need a callback at all.
 
 module.exports = {
-	test: function(req, res){
+	test: function(req, res, callback){
 		console.log("model function called successfully");
-		var result = doQuery("select * from users");
-		return result;
+
+		//you can make a query by calling your callback, which you write in the controller.
+		doQuery("select * from users", callback);
 	}
 }
 
