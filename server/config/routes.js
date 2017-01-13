@@ -50,4 +50,16 @@ module.exports = function(app){
     app.post('/posts/:id/edit', controllers.postController.update)
 
 
+  // these were from a merge commit. keeping here for posterity
+  // app.get('/posts/:id', controllers.postController.show)
+  //
+  // // need route to update db entry
+  // app.post('/posts/:id/edit', controllers.postController.update)
+  // // this goes to the confirm deletion page (this will be handled via modal on admin page)
+  // // app.get('/posts/delete/:id', controllers.postsController.delete)
+  // // this actually removes it from the database
+  // app.post('/posts/:id/destroy', controllers.postController.destroy)
+  //
+	// //user submits registration form
+	// app.post('/newuser', controllers.registrationController.newUser);
 }
