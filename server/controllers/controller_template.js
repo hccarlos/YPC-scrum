@@ -13,10 +13,10 @@ module.exports = {
 	test: function(req, res){
 		console.log("controller function called successfully");
 		
-		//this is an example of calling a model function and putting the result into a variable
-		var result = models.model_template.test(req, res);
-		console.log(result);
+		//response inside callback
+		models.model_template.test(req, res, function(){
+			res.send("successfully made it through route->controller->model->response");
+		});
 
-		res.send("successfully made it through route->controller->model->response");
 	}
 }
