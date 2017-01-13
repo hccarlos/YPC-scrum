@@ -10,6 +10,7 @@ module.exports = function doQuery(query, callback)
     }
     catch (e)
     {
+        callback(e, rows, fields);
         console.log(e);
         console.log("---");
         console.log(query);
