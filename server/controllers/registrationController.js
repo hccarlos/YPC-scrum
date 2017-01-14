@@ -13,35 +13,46 @@ module.exports = {
 	//sends the registration page
 	regPage: function(req, res){
 		//do stuff
-		res.sendFile("register.html", {root: htmlPath});
+		console.log(req.session.errors );
+		if (req.session.errors === undefined){
+			req.session.errors = {};
+		}
+		res.render("./views/join.ejs", {errors: req.session.errors});
+			req.session.errors = {};
 	},
 
 	//user tries to register
 	newUser: function(req, res){
 		console.log(req.body);
 		var valid = true;
-		var validationErrors = [];
+		var validationErrors = {};
+		req.session.errors = {};
 
 		if(req.body.first_name.length < 1)
 		{
 			valid = false;
-			validationErrors.push("First name is required.");
+			validationErrors.first_name = ("First name is required.");
 		}
 		if(req.body.last_name.length < 1)
 		{
 			valid = false;
-			validationErrors.push("Last name is required.");
+			validationErrors.last_name = ("Last name is required.");
+		}
+		if(req.body.phone < 10)
+		{
+			valid = false;
+			validationErrors.phone = ("Invalid phone number.")
 		}
 		if(req.body.email.length < 1)
 		{
 			valid = false;
-			validationErrors.push("Email is required.");
+			validationErrors.email = ("Email is required.");
 		}
 
 		if(req.body.pw1 !== req.body.pw2)
 		{
 			valid = false;
-			validationErrors.push("Passwords do not match.");
+			validationErrors.password = ("Passwords do not match.");
 		}
 
 		if(valid === true)
@@ -51,22 +62,28 @@ module.exports = {
 					console.log(key, ":", err[key]);
 					console.log("--");
 				}
-				console.log(err.errno);
-				if(err.errno !== undefined)
+
+				if(err != undefined && err.errno !== undefined) 
 				{
 					switch(err.errno)
 					{
-						case 1062: validationErrors.push("Email address already taken.");
+						case 1062: validationErrors.email = ("Email address already taken.");
 						break;
 					}
+					req.session.errors = validationErrors;
+					res.redirect('/registration');
 				}
-				res.json({err: validationErrors, rows: rows});
+				else{
+					res.redirect('/');
+				}
+
 			});
 		}
 		else
 		{
 			console.log("Validation failed.");
-			res.json({err: validationErrors, rows: undefined});
+			req.session.errors = validationErrors;
+			res.redirect('/registration');
 		}
 	}
 };
