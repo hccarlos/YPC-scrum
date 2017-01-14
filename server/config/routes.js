@@ -11,10 +11,10 @@ fs.readdirSync(controllerPath).forEach(function(file) {
 
 module.exports = function(app){
 	app.post('/dummies/:test', function(req, res){
-		
+
 		// I'm testing the info that I'm getting from my dummy Factory
 		// I console.log the body and the params just to make sure that it's
-		// going through 
+		// going through
 
 		console.log(req.body);
 		console.log(req.params.test)
@@ -24,4 +24,10 @@ module.exports = function(app){
 	app.get('/test', controllers.controller_template.test);
 
 	app.get('/registration', controllers.registrationController.regPage);
+
+  app.get('/login', controllers.loginController.loginPage);
+
+  app.post('/loginattempt', controllers.loginController.loginAttempt);
+  // app.post('/loginattempt', controllers.loginController.loginAttempt);
+
 }
