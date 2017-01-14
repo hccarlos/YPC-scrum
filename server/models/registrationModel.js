@@ -14,7 +14,7 @@ module.exports = {
 		console.log(req.body.pw1);
 		var salt = bcrypt.genSaltSync(10);
 		var hashedPW = bcrypt.hashSync(req.body.pw1, salt);
-		doQuery("insert into users (first_name, last_name, password, email, created_at, updated_at) values ('"+ req.body.first_name + "', '" + req.body.last_name + "', '" + hashedPW + "', '" + req.body.email +"', now(), now())", callback);
+		doQuery("insert into users (first_name, last_name, email, password, phone, position, company, created_at, updated_at) values ('"+ req.body.first_name + "', '" + req.body.last_name + "', '" + req.body.email + "', '" + hashedPW + "', '" + req.body.phone + "', '" + req.body.position + "', '" + req.body.company + "', now(), now())", callback);
 	},
 
 	checkEmail: function(req, res, callback){
