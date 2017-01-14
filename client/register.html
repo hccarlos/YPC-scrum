@@ -2,13 +2,93 @@
 <html>
 <head>
 	<title>Registration</title>
+	<style type="text/css">
+		#wrapper{
+			width: 100%;
+		}
+		#regForm{
+			display: block;
+			width: 220px;
+			border: 2px solid #000;
+		}
+		#regForm *{
+			display: block;
+			margin: 10px;
+		}
+	</style>
+	<script type="text/javascript">
+		function httpRequest(url, method, data, callback) {
+			var httpRequest = new XMLHttpRequest();
+			var formattedData = "";
+			httpRequest.open(method, url, true);
+			httpRequest.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+
+			if (!httpRequest) {
+				console.log("Failed to make HTTP request.")
+				return false;
+			}
+
+			httpRequest.onreadystatechange = function(){
+				if(httpRequest.readyState === XMLHttpRequest.DONE){
+					callback(httpRequest);
+				}
+			};	
+
+			for(item in data)
+			{
+				formattedData += item + "=" + data[item] + "&";
+			}
+			formattedData = formattedData.slice(0, formattedData.length - 1);
+
+			console.log(formattedData);
+			if(data !== undefined && data !== {}){
+				httpRequest.send(formattedData);
+			}
+			else{
+				httpRequest.send();
+			}
+		}
+
+		function registerCallback(reqObj)
+		{
+			var valerrs = document.getElementById("validation_errors");
+			var resObj = JSON.parse(reqObj.responseText);
+			valerrs.innerText = "";
+			if(resObj.err !== undefined)
+			{
+				for(var error of resObj.err)
+				{
+					valerrs.innerText += error + "\n";
+				}
+			}
+		}
+
+		function submitRegistration(event){
+			var data = {
+				first_name: document.forms["regForm"]["first_name"].value,
+				last_name: document.forms["regForm"]["last_name"].value,
+				pw1: document.forms["regForm"]["pw1"].value,
+				pw2: document.forms["regForm"]["pw2"].value,
+				email: document.forms["regForm"]["email"].value
+			};
+			httpRequest('/newuser', 'POST', data, registerCallback);
+		}
+
+	</script>
 </head>
 <body>
-
-	<input type="text" name="first_name">
-	<input type="text" name="last_name">
-	<input type="text" name="email">
-	<input type="text" name="phone">
-
+	<div id="wrapper">
+		<form name="regForm" action="/newuser" method="post" id="regForm" onsubmit="event.preventDefault(); submitRegistration();">
+			<h2>New Member Registration</h2>
+			<label>First Name:</label><input type="text" name="first_name">
+			<label>Last Name:</label><input type="text" name="last_name">
+			<label>Password:</label><input type="password" name="pw1">
+			<label>Confirm Password:</label><input type="password" name="pw2">
+			<label>Email:</label><input type="email" name="email">
+			<input type="submit" name="submit" value="Sign Up">
+		</form>
+		<br>
+		<p id="validation_errors"></p>
+	</div>
 </body>
 </html>
