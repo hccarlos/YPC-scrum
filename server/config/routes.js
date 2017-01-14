@@ -30,7 +30,7 @@ module.exports = function(app){
   app.get('/login', controllers.loginController.loginPage);
 
   app.post('/loginattempt', controllers.loginController.loginAttempt);
-  // app.post('/loginattempt', controllers.loginController.loginAttempt);
+
 
   app.post('/newuser', controllers.registrationController.newUser);
 

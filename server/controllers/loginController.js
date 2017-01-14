@@ -2,14 +2,19 @@
 var path = require("path");
 var htmlPath = path.join(__dirname, "./../../client/");
 var requireFolder = require("./../config/req_folder.js");
-requireFolder("models");
+var models = requireFolder("models");
+var bcrypt = require("bcryptjs");
 
 //when you call a model function it should return a value (usually an array, the result of a query)
 //after that you can make the response here in the controller
 
 module.exports = {
   loginPage: function(req,res){
-    res.sendFile("login.html", {root: htmlPath});
+    console.log(req.session.errors );
+    if (req.session.errors === undefined){
+      req.session.errors = {};
+    }
+    res.render("./views/sign_in.ejs", {errors: req.session.errors});
   },
 
   loginAttempt: function(req, res) {
@@ -20,16 +25,18 @@ module.exports = {
 
     if(valid === true)
     {
-      models.loginmodel.loginAttempt(req, res, function(err, rows, fields){
+      models.loginModel.loginAttempt(req, res, function(err, rows, fields){
+        console.log("this is rows", rows);
+        var passwordCheck = bcrypt.compareSync(req.body.password, rows[0].password);
+        console.log(passwordCheck);
         if(err)
         {
           console.log("entered wrong email or password");
-          res.json({err: validationErrors, rows: rows});
+          res.redirect("/login");
         }
-        else
-        {
-          !bcrypt.compareSync(req.body.password, hashedPW)
-          return callback();
+        else if(passwordCheck){
+          console.log("password matches password in database");
+          res.redirect("/");
         }
       });
 
