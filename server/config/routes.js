@@ -53,6 +53,14 @@ module.exports = function(app){
     app.get('/upload', controllers.uploadController.index)
 
 
+    // user functions
+    app.get('/user', controllers.userController.index)
+    app.post('/user/edit/:id', controllers.userController.update, function(req, res){
+      console.log(req.body);
+      console.log(req.params.test);
+    });
+
+
   // these were from a merge commit. keeping here for posterity
   // app.get('/posts/:id', controllers.postController.show)
   //
