@@ -1,4 +1,5 @@
 /bower_components
 /node_modules
 *.bak
+*/.DS_Store
 /server/config/s3-keys.js
