@@ -27,35 +27,33 @@ module.exports = {
 		var validationErrors = {};
 		req.session.errors = {};
 
-		if(req.body.first_name.length < 1)
-		{
+		if(req.body.first_name.length < 1){
 			valid = false;
-			validationErrors.first_name = ("First name is required.");
+			validationErrors.first_name = "First name is required.";
 		}
-		if(req.body.last_name.length < 1)
-		{
+		if(req.body.last_name.length < 1){
 			valid = false;
-			validationErrors.last_name = ("Last name is required.");
+			validationErrors.last_name = "Last name is required.";
 		}
-		if(req.body.phone < 10)
-		{
+		if(req.body.phone < 10){
 			valid = false;
-			validationErrors.phone = ("Invalid phone number.")
+			validationErrors.phone = "Invalid phone number.";
 		}
-		if(req.body.email.length < 1)
-		{
+		if(req.body.email.length < 1){
 			valid = false;
-			validationErrors.email = ("Email is required.");
+			validationErrors.email = "Email is required.";
 		}
 
-		if(req.body.pw1 !== req.body.pw2)
-		{
+		if(req.body.pw1 !== req.body.pw2){
 			valid = false;
-			validationErrors.password = ("Passwords do not match.");
+			validationErrors.password = "Passwords do not match.";
+		}
+		else if(req.body.pw1.length < 8){
+			valid = false;
+			validationErrors.password = "Password must be at least 8 characters";
 		}
 
-		if(valid === true)
-		{
+		if(valid === true){
 			models.registrationModel.newUser(req, res, function(err, rows, fields){
 				for(key in err){
 					console.log(key, ":", err[key]);
@@ -66,7 +64,7 @@ module.exports = {
 				{
 					switch(err.errno)
 					{
-						case 1062: validationErrors.email = ("Email address already taken.");
+						case 1062: validationErrors.email = "Email address already taken.";
 						break;
 					}
 					req.session.errors = validationErrors;
