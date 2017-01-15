@@ -18,7 +18,6 @@ module.exports = {
 			req.session.errors = {};
 		}
 		res.render("./views/join.ejs", {errors: req.session.errors});
-			req.session.errors = {};
 	},
 
 	//user tries to register
@@ -63,7 +62,7 @@ module.exports = {
 					console.log("--");
 				}
 
-				if(err != undefined && err.errno !== undefined) 
+				if(err != undefined && err.errno !== undefined)
 				{
 					switch(err.errno)
 					{

@@ -26,6 +26,12 @@ module.exports = function(app){
 	//registration page
   // ??? WHY DO WE HAVE 2 OF THESE ???
 	app.get('/registration', controllers.registrationController.regPage);
+
+  app.get('/login', controllers.loginController.loginPage);
+
+  app.post('/loginattempt', controllers.loginController.loginAttempt);
+
+
   app.post('/newuser', controllers.registrationController.newUser);
 
 
