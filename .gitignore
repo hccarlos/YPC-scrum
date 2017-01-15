@@ -2,3 +2,4 @@
 /node_modules
 *.bak
 /server/config/s3-keys.js
+.DS_Store
