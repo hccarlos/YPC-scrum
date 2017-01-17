@@ -12,13 +12,12 @@ var session = require("express-session");
 module.exports = {
 
 	//sends the registration page
-	regPage: function(req, res){
-		//do stuff
+	regPage: function(req, res, data){
 		console.log(req.session.errors );
 		if (req.session.errors === undefined){
 			req.session.errors = {};
 		}
-		res.render("./views/join.ejs", {errors: req.session.errors});
+		res.render("./views/join.ejs", {errors: req.session.errors, navBar: data.navBar});
 	},
 
 	//user tries to register

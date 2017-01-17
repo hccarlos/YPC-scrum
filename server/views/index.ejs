@@ -42,7 +42,6 @@
 	<script src="js/respond.min.js"></script>
 	<![endif]-->
 
-	<%- navScript %>
 
 	</head>
 	<body>
@@ -51,8 +50,20 @@
 
 	<div id="page">
 
-	<%- include navBar.ejs %>
-
+	<nav class="fh5co-nav" role="navigation">
+		<div class="container">
+			<div class="row">
+				<div class="col-xs-2 text-left">
+					<div id="fh5co-logo"><a href="/"><img src="images/logo/YPCLogo.png" width="300px"></a></div>
+				</div>
+				<div class="col-xs-10 text-right menu-1">
+					<ul id="nav_links">
+					<%- navBar %>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</nav>
 
 	<header id="fh5co-header" class="fh5co-cover" role="banner" style="background-image:url(/images/banner/YPCbanner.jpg)" data-stellar-background-ratio="1">
 		<div class="overlay"></div>

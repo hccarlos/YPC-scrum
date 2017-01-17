@@ -9,12 +9,12 @@ var bcrypt = require("bcryptjs");
 //after that you can make the response here in the controller
 
 module.exports = {
-  loginPage: function(req,res){
-    console.log(req.session.errors );
+  loginPage: function(req, res, data){
+    console.log(req.session.errors);
     if (req.session.errors === undefined){
       req.session.errors = {};
     }
-    res.render("./views/sign_in.ejs", {errors: req.session.errors});
+    res.render("./views/sign_in.ejs", {errors: req.session.errors, navBar: data.navBar});
   },
 
   loginAttempt: function(req, res) {
