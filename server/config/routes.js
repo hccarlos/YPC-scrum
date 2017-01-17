@@ -47,6 +47,7 @@ module.exports = function(app){
 
     app.get('/s3_credentials', controllers.uploadController.credentials)
     app.get('/upload', controllers.uploadController.index)
+    app.post('/upload/:key/destroy', controllers.uploadController.destroy)
 
 
     // user functions

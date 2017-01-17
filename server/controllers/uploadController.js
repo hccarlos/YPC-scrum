@@ -7,12 +7,12 @@ var AWS = require('aws-sdk');
 
 
 var s3Config = require('./../config/s3-keys.js');
+AWS.config.update({ accessKeyId: s3Config.accessKey, secretAccessKey: s3Config.secretKey });
+AWS.config.update({region: s3Config.region});
+var s3sdk = new AWS.S3();
 
 module.exports = {
   index: function(req, res){
-    AWS.config.update({ accessKeyId: s3Config.accessKey, secretAccessKey: s3Config.secretKey });
-    AWS.config.update({region: s3Config.region});
-    var s3sdk = new AWS.S3();
     // var path = "path/to/";
     var params = {Bucket: s3Config.bucket};
     // var req = s3.listObjects(params);
@@ -23,24 +23,39 @@ module.exports = {
         throw err;
       }
       console.log(data);
-      res.render("./views/admin/upload/index.ejs", {allFiles : data.Contents});
+      res.render("./views/admin/upload/index.ejs", {allFiles: data.Contents, bucketName: s3Config.bucket});
     });
   },
-	credentials: function(request, response){
+	credentials: function(req, res){
     // console.log("this function generates credentials");
-    if (request.query.filename) {
-      // var filename = crypto.randomBytes(16).toString('hex') + path.extname(request.query.filename);
-      var filename = request.query.filename;
-      filename = path.basename(filename, path.extname(filename)) + " (" + new Date().toISOString() + ")" + path.extname(request.query.filename);
+    if (req.query.filename) {
+      // var filename = crypto.randomBytes(16).toString('hex') + path.extname(req.query.filename);
+      var filename = req.query.filename;
+      filename = path.basename(filename, path.extname(filename)) + " (" + new Date().toISOString() + ")" + path.extname(req.query.filename);
       // console.log(filename);
       // console.log(request.query.filename);
       // console.log(s3Config);
-      response.json(s3.s3Credentials(s3Config, {filename: filename, contentType: request.query.content_type}));
+      res.json(s3.s3Credentials(s3Config, {filename: filename, contentType: req.query.content_type}));
     }
     else {
       // console.log("filename is required");
-      response.status(400).send('filename is required');
+      res.status(400).send('filename is required');
     }
+  },
+  destroy: function(req, res){
+    console.log("hitting destroy key route");
+    var key=req.params.key;
+    console.log(key);
+    var params = {
+      Bucket: s3Config.bucket, /* required */
+      Key: key /* required */
+    };
+    s3sdk.deleteObject(params, function(err, data) {
+      if (err) console.log(err, err.stack); // an error occurred
+      else     console.log(data);           // successful response
+    });
+    res.redirect("/upload");
   }
+
 
 }
