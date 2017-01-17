@@ -7,6 +7,7 @@ var path = require("path");
 var htmlPath = path.join(__dirname, "./../../client/");
 var requireFolder = require("./../config/req_folder.js");
 var models = requireFolder("models");
+var session = require("express-session");
 
 module.exports = {
 
@@ -71,6 +72,8 @@ module.exports = {
 					res.redirect('/registration');
 				}
 				else{
+					req.session.userid = rows.insertId;
+					console.log(req.session.userid, "!!!");
 					res.redirect('/');
 				}
 

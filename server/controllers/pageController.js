@@ -11,6 +11,6 @@ var models = requireFolder("models");
 
 module.exports = {
 	loadPage: function(req, res, pageName, data){
-		res.render(pageName);
+		res.render(pageName, data);
 	}
 }
