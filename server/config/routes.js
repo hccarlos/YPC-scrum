@@ -3,7 +3,7 @@ var path = require("path");
 var controllerPath = path.join(__dirname, "./../controllers");
 var controllers = {};
 var session = require("express-session");
-var generateNavBar = require("../config/generateNavBar_function.js");
+var navBar = require("../config/generateNavBar_function.js");
 
 fs.readdirSync(controllerPath).forEach(function(file) {
   if(file.indexOf('.js') >= 0) {
@@ -58,15 +58,15 @@ module.exports = function(app){
     });
 
   //ejs pages
-	app.get("/", function(req, res){controllers.pageController.loadPage(req, res, "views/index.ejs", {navBar: generateNavBar("home")});});
-	app.get("/executives", function(req, res){controllers.pageController.loadPage(req, res, "views/executives.ejs", {navBar: generateNavBar("executives")});});
-	app.get("/events", function(req, res){controllers.pageController.loadPage(req, res, "views/events.ejs", {navBar: generateNavBar("events")});});
-	app.get("/blog", function(req, res){controllers.pageController.loadPage(req, res, "views/blog.ejs", {navBar: generateNavBar("blog")});});
-	app.get("/contact", function(req, res){controllers.pageController.loadPage(req, res, "views/contact.ejs", {navBar: generateNavBar("contact")});});
+	app.get("/", function(req, res){controllers.pageController.loadPage(req, res, "views/index.ejs", {navBar: navBar.generate("home")});});
+	app.get("/executives", function(req, res){controllers.pageController.loadPage(req, res, "views/executives.ejs", {navBar: navBar.generate("executives")});});
+	app.get("/events", function(req, res){controllers.pageController.loadPage(req, res, "views/events.ejs", {navBar: navBar.generate("events")});});
+	app.get("/blog", function(req, res){controllers.pageController.loadPage(req, res, "views/blog.ejs", {navBar: navBar.generate("blog")});});
+	app.get("/contact", function(req, res){controllers.pageController.loadPage(req, res, "views/contact.ejs", {navBar: navBar.generate("contact")});});
 
   //login and registration page routes
-	app.get('/registration', function(req, res){controllers.registrationController.regPage(req, res, {navBar: generateNavBar("registration")})});
-  app.get('/login', function(req, res){controllers.loginController.loginPage(req, res, {navBar: generateNavBar("login")})});
+	app.get('/registration', function(req, res){controllers.registrationController.regPage(req, res, {navBar: navBar.generate("registration")})});
+  app.get('/login', function(req, res){controllers.loginController.loginPage(req, res, {navBar: navBar.generate("login")})});
 
 	//login and registration post routes
 	app.post('/loginattempt', controllers.loginController.loginAttempt);
