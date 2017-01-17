@@ -57,6 +57,7 @@
       // Typically, after uploading a file to S3, you want to register that file with
       // your backend. Remember that we did not persist anything before the upload.
       console.log($('<a/>').attr('href', s3Url).text('File uploaded at '+s3Url).appendTo($('body')));
+
     };
 
     $(function() {
@@ -76,12 +77,16 @@
         <th>File Name</th>
         <th>Size (kb)</th>
         <th>Last Modified</th>
+        <th>Actions</th>
+        <th></th>
       </tr>
       <% for (oneFile of allFiles) { %>
       <tr>
         <td><%= oneFile.Key %></td>
         <td><%= oneFile.Size %></td>
         <td><%= oneFile.LastModified %></td>
+        <td><a href="https://<%= bucketName %>.s3.amazonaws.com/<%=oneFile.Key%>"><button type="button" name="button">View File</button></a></td>
+        <td><form action="/upload/<%=oneFile.Key%>/destroy" method="post"><input type="submit" value="Delete File"></form></td>
       </tr>
       <% } %>
     </table>
