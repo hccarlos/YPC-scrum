@@ -58,15 +58,16 @@ module.exports = function(app){
     });
 
   //ejs pages
-	app.get("/", function(req, res){controllers.pageController.loadPage(req, res, "views/index.ejs", {navBar: navBar.generate("home")});});
-	app.get("/executives", function(req, res){controllers.pageController.loadPage(req, res, "views/executives.ejs", {navBar: navBar.generate("executives")});});
-	app.get("/events", function(req, res){controllers.pageController.loadPage(req, res, "views/events.ejs", {navBar: navBar.generate("events")});});
-	app.get("/blog", function(req, res){controllers.pageController.loadPage(req, res, "views/blog.ejs", {navBar: navBar.generate("blog")});});
-	app.get("/contact", function(req, res){controllers.pageController.loadPage(req, res, "views/contact.ejs", {navBar: navBar.generate("contact")});});
+  //the second parameter of navBar.generate represents whether the vistor is logged in or not. This will be implemented soon via session.
+	app.get("/", function(req, res){controllers.pageController.loadPage(req, res, "views/index.ejs", {navBar: navBar.generate("home", false)});});
+	app.get("/executives", function(req, res){controllers.pageController.loadPage(req, res, "views/executives.ejs", {navBar: navBar.generate("executives", false)});});
+	app.get("/events", function(req, res){controllers.pageController.loadPage(req, res, "views/events.ejs", {navBar: navBar.generate("events", false)});});
+	app.get("/blog", function(req, res){controllers.pageController.loadPage(req, res, "views/blog.ejs", {navBar: navBar.generate("blog", false)});});
+	app.get("/contact", function(req, res){controllers.pageController.loadPage(req, res, "views/contact.ejs", {navBar: navBar.generate("contact", false)});});
 
   //login and registration page routes
-	app.get('/registration', function(req, res){controllers.registrationController.regPage(req, res, {navBar: navBar.generate("registration")})});
-  app.get('/login', function(req, res){controllers.loginController.loginPage(req, res, {navBar: navBar.generate("login")})});
+	app.get('/registration', function(req, res){controllers.registrationController.regPage(req, res, {navBar: navBar.generate("registration", false)})});
+  app.get('/login', function(req, res){controllers.loginController.loginPage(req, res, {navBar: navBar.generate("login", false)})});
 
 	//login and registration post routes
 	app.post('/loginattempt', controllers.loginController.loginAttempt);
