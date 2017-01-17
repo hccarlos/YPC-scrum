@@ -48,35 +48,16 @@
 	<div class="fh5co-loader"></div>
 
 	<div id="page">
-	<nav class="fh5co-nav" role="navigation">
-		<div class="container">
-			<div class="row">
-				<div class="col-xs-2 text-left">
-					<div id="fh5co-logo"><a href="index.html"><img src="images/logo/YPCLogo.png" width="300px"></a></div>
-				</div>
-				<div class="col-xs-10 text-right menu-1">
-					<ul>
-						<li><a href="index.html">Home</a></li>
-						<li class="has-dropdown"><a href="Executives.html">Executives</a></li>
-						<li class="active"><a href="events.html">Events</a></li>
-						<li><a href="join.html">Join</a></li>
-						<li><a href="blog.html">Blog</a></li>
-						<li><a href="contact.html">Contact</a></li>
-						<li><a href="sign_in.html" class="btn btn-primary" id="Sign-in">Sign In</a></li>
-					</ul>
-				</div>
-			</div>
-		</div>
-	</nav>
+	<%- include navBar.ejs %>
 
-	<header id="fh5co-header" class="fh5co-cover fh5co-cover-sm" role="banner" style="background-image:url(images/img_bg_1.jpg);" data-stellar-background-ratio="1">
+	<header id="fh5co-header" class="fh5co-cover fh5co-cover-sm" role="banner" style="background-image:url(images/img_bg_1.jpg);" data-stellar-background-ratio="0.5">
 		<div class="overlay"></div>
 		<div class="container">
 			<div class="row">
 				<div class="col-md-7 text-left">
 					<div class="display-t">
 						<div class="display-tc animate-box" data-animate-effect="fadeInUp">
-							<h1 class="mb30">Events</h1>
+							<h1 class="mb30">Contact Us</h1>
 						</div>
 					</div>
 				</div>
@@ -84,39 +65,54 @@
 		</div>
 	</header>
 
-	<div id="fh5co-project">
+	<div id="fh5co-contact">
 		<div class="container">
-			<div class="row row-pb-md">
-				<div class="col-md-8 col-md-offset-2 text-left fh5co-heading  animate-box">
-					<span>Expand your network</span>
-					<h2>UPCOMING EVENTS</h2>
-					<p>Dignissimos asperiores vitae velit veniam totam fuga molestias accusamus alias autem provident. Odit ab aliquam dolor eius.</p>
-				</div>
-			</div>
-			<hr>
-			<br><br>
-			<div class="row row-pb-md">
-				<div class="col-md-8 col-md-offset-2 text-left animate-box" data-animate-effect="fadeInUp">
-					<div class="fh5co-heading">
-						<span>Cherished Memories</span>
-						<h2>PAST EVENTS</h2>
-						<p>Dignissimos asperiores vitae velit veniam totam fuga molestias accusamus alias autem provident. Odit ab aliquam dolor eius.</p>
-						<br><br>
-						<span>Nov. 3rd</span>
-						<h3>YPC Kick-Off @ The Loft</h3>
-						<p>Please join the Young Professional Council in the heart of downtown San Jose for their inaugural kick-off happy hour! Enjoy the opportunity to mix and mingle with other like-minded young philanthropists while learning more about why The YPC is dedicated towards supporting the future, state of the art Women and Children's Center at Santa Clara County's largest and only public hospital, Santa Clara Valley Medical Center.</p>
-						<img src="images/ALoft.jpg">
-						<br><br>
-						<p>Meet the Executive Committee of the YPC to hear about how we support the mission of the Valley Medical Center, the upcoming events YPC will be hosting in 2017 and how you can get involved! You will also have the opportunity to chat with Valley Medical Center professionals including the CEO of The VMC Foundation, Chris Wilder to hear all about the exciting future of the SCVMC!</p>
-						<p>Each ticket will include a drink, appetizers and entry to win raffle prizes including:</p>
+			<div class="row">
+				<div class="col-md-5 col-md-push-1 animate-box">
+					<div class="fh5co-contact-info">
+						<h3>Contact Information</h3>
 						<ul>
-							<li>San Jose Sharks tickets</li>
-							<li>Award Winning Bottles of Wine</li>
-							<li>Gift Cards</li>
-							<li>And more!</li>
+							<li class="address">300 Santana Row, <br> Suite 500 San Jose CA 95128</li>
+							<li class="phone"><a href="tel://4084545206"> (408) 454-5206</a></li>
+							<li class="email"><a href="mailto:elliot.justice@cushwake.com">elliot.justice@cushwake.com</a></li>
 						</ul>
-						<p>*Attire will be Business Casual</p>
 					</div>
+				</div>
+				<div class="col-md-6 animate-box">
+					<h3>Get In Touch</h3>
+					<form action="#">
+						<div class="row form-group">
+							<div class="col-md-6">
+								<label for="fname">First Name</label>
+								<input type="text" id="fname" class="form-control" placeholder="Your firstname">
+							</div>
+							<div class="col-md-6">
+								<label for="lname">Last Name</label>
+								<input type="text" id="lname" class="form-control" placeholder="Your lastname">
+							</div>
+						</div>
+						<div class="row form-group">
+							<div class="col-md-12">
+								<label for="email">Email</label>
+								<input type="text" id="email" class="form-control" placeholder="Your email address">
+							</div>
+						</div>
+						<div class="row form-group">
+							<div class="col-md-12">
+								<label for="subject">Subject</label>
+								<input type="text" id="subject" class="form-control" placeholder="Your subject of this message">
+							</div>
+						</div>
+						<div class="row form-group">
+							<div class="col-md-12">
+								<label for="message">Message</label>
+								<textarea name="message" id="message" cols="30" rows="10" class="form-control" placeholder="Say something about us"></textarea>
+							</div>
+						</div>
+						<div class="form-group">
+							<input type="submit" value="Send Message" class="btn btn-lg btn-primary">
+						</div>
+					</form>
 				</div>
 			</div>
 		</div>
@@ -129,7 +125,7 @@
 					<span>Let's work together</span>
 					<h2>BECOME A MEMBER</h2>
 					<p>The focus of the Young Professional Council is to raise funds, volunteer, promote community awareness, and build partnerships with the local business community.</p>
-					<p><a href="join.html"><button type="submit" class="btn btn-primary">Join Us</button></a></p>
+					<p><a href="/registration"><button type="submit" class="btn btn-primary">Join Us</button></a></p>
 				</div>
 			</div>
 		</div>
@@ -139,29 +135,27 @@
 		<div class="container">
 			<div class="row row-pb-md">
 				<div class="col-md-4 fh5co-widget ">
-					<h3><a href="index.html"><img src="images/logo/YPCLogo.png" width="250px"></a></h3>
+					<h3><a href="/"><img src="images/logo/YPCLogo.png" width="250px"></a></h3>
 				</div>
 				<div class="col-md-2 col-sm-4 col-xs-6 col-md-push-1 ">
 					<ul class="fh5co-footer-links">
-						<li><a href="index.html">Home</a></li>
-						<li><a href="executives.html">Executives</a></li>
-						<li><a href="events.html">Events</a></li>
+						<li><a href="/">Home</a></li>
+						<li><a href="/executives">Executives</a></li>
+						<li><a href="/events">Events</a></li>
 					</ul>
 				</div>
-
 				<div class="col-md-2 col-sm-4 col-xs-6 col-md-push-1 ">
 					<ul class="fh5co-footer-links">
-						<li><a href="join.html">Join</a></li>
-						<li><a href="blog.html">Blog</a></li>
-						<li><a href="contact.html">Contact</a></li>
+						<li><a href="/registration">Join</a></li>
+						<li><a href="/blog">Blog</a></li>
+						<li><a href="/contact">Contact</a></li>
 					</ul>
 				</div>
-
 				<div class="col-md-2 col-sm-4 col-xs-6 col-md-push-1 ">
 					<ul class="fh5co-footer-links">
-						<li><a href="join.html">Facebook</a></li>
-						<li><a href="blog.html">LinkedIn</a></li>
-						<li><a href="contact.html">Twitter</a></li>
+						<li><a href="/registration">Facebook</a></li>
+						<li><a href="/blog">LinkedIn</a></li>
+						<li><a href="/contact">Twitter</a></li>
 					</ul>
 				</div>
 			</div>

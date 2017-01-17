@@ -2,6 +2,7 @@ var fs = require("fs");
 var path = require("path");
 var controllerPath = path.join(__dirname, "./../controllers");
 var controllers = {};
+var session = require("express-session");
 
 fs.readdirSync(controllerPath).forEach(function(file) {
   if(file.indexOf('.js') >= 0) {
@@ -23,16 +24,6 @@ module.exports = function(app){
 	//testing to see if the whole chain of files works
 	app.get('/test', controllers.controller_template.test);
 
-	//registration page
-  // ??? WHY DO WE HAVE 2 OF THESE ???
-	app.get('/registration', controllers.registrationController.regPage);
-
-  app.get('/login', controllers.loginController.loginPage);
-
-  app.post('/loginattempt', controllers.loginController.loginAttempt);
-
-
-  app.post('/newuser', controllers.registrationController.newUser);
 
 
   // SHOW POST
@@ -65,6 +56,33 @@ module.exports = function(app){
       console.log(req.body);
       console.log(req.params.test);
     });
+    
+    var scr = "<script>window.onload = function(){"
+  +"var page = location.pathname;"
+  +"page = page.slice(1);"
+  +"var highlight = document.getElementById(page + '_link');"
+  +"console.log(highlight);"
+  +"highlight.className = 'active';"
+  +"var button = document.getElementById('login_link');"
+  +"button.innerHTML = '<span>sign up</span>';"
+  +"console.log(button);"
+  +"}</script>";
+
+    //ejs pages
+	app.get("/", function(req, res){controllers.pageController.loadPage(req, res, "views/index.ejs", {navScript: scr});});
+	app.get("/executives", function(req, res){controllers.pageController.loadPage(req, res, "views/executives.ejs");});
+	app.get("/events", function(req, res){controllers.pageController.loadPage(req, res, "views/events.ejs");});
+	app.get("/blog", function(req, res){controllers.pageController.loadPage(req, res, "views/blog.ejs");});
+	app.get("/contact", function(req, res){controllers.pageController.loadPage(req, res, "views/contact.ejs");});
+	app.get("/sign_in", function(req, res){controllers.pageController.loadPage(req, res, "views/sign_in.ejs");});
+	app.get("/login", function(req, res){controllers.pageController.loadPage(req, res, "views/sign_in.ejs");});
+	app.get('/registration', controllers.registrationController.regPage);
+  app.get('/login', controllers.loginController.loginPage);
+
+	//login and registration post routes
+	app.post('/loginattempt', controllers.loginController.loginAttempt);
+	app.post('/newuser', controllers.registrationController.newUser);
+
 
 
   // these were from a merge commit. keeping here for posterity
