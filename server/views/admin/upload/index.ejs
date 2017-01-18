@@ -54,10 +54,22 @@
     function onS3Done(e, data) {
       var s3Url = $(data.jqXHR.responseXML).find('Location').text();
       var s3Key = $(data.jqXHR.responseXML).find('Key').text();
+      var s3Size = data.originalFiles[0].size;
+      var s3LastModified = data.originalFiles[0].lastModifiedDate;
+      console.log("size is " + s3Size);
+      console.log(s3LastModified);
       // Typically, after uploading a file to S3, you want to register that file with
       // your backend. Remember that we did not persist anything before the upload.
-      console.log($('<a/>').attr('href', s3Url).text('File uploaded at '+s3Url).appendTo($('body')));
-
+      // window.location.reload();
+      $('<a/>').attr('href', s3Url).text('File uploaded at '+s3Url).appendTo($('body'));
+      var HTMLtoAppend = '<tr>'+
+      '<td>'+s3Key+'</td>'+
+      '<td>'+s3Size+'</td>'+
+      '<td>'+s3LastModified+'</td>'+
+      '<td><a href="'+s3Url+'">'+
+      '<button type="button" name="button">View File</button></a></td>'+
+      '<td><form action="/upload/'+s3Key+'/destroy" method="post"><input type="submit" value="Delete File"></form></td></tr>';
+      $(HTMLtoAppend).appendTo($('table'));
     };
 
     $(function() {
