@@ -22,7 +22,7 @@ module.exports = {
       if(err){
         throw err;
       }
-      console.log(data);
+      // console.log(data);
       res.render("./views/admin/upload/index.ejs", {allFiles: data.Contents, bucketName: s3Config.bucket});
     });
   },
@@ -51,8 +51,12 @@ module.exports = {
       Key: key /* required */
     };
     s3sdk.deleteObject(params, function(err, data) {
-      if (err) console.log(err, err.stack); // an error occurred
-      else     console.log(data);           // successful response
+      if (err) {
+        console.log(err, err.stack); // an error occurred
+      }
+      else {
+        console.log(data);           // successful response
+      }
     });
     res.redirect("/upload");
   }
