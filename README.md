@@ -15,5 +15,5 @@ The Young Professional Council (YPC) is composed of emerging leaders in the busi
 ### **Carmen Chung** - [GitHub](http://github.com/CCube3) - [LinkedIn](http://www.linkedin.com/in/carmen-chung-2164293a)
 ### **Chris Rollins** - [GitHub](http://github.com/chrisrollins) - [LinkedIn](http://www.linkedin.com/in/chris-rollins-2669a053)
 ### **Harmann Bajwa** - [GitHub](http://github.com/harmannb) - [LinkedIn](http://www.linkedin.com/in/harmannbajwa) - [Website](http://www.harmann.tech/)
-### **Queenie Qho** - [GitHub](http://github.com/qho-queenie) - [LinkedIn](http://www.linkedin.com/in/queenieho1)
+### **Queenie Ho** - [GitHub](http://github.com/qho-queenie) - [LinkedIn](http://www.linkedin.com/in/queenieho1)
 ### **Zak Strassberg** - [GitHub](http://github.com/ZakStrassberg) - [LinkedIn](http://www.linkedin.com/in/zakstrassberg) - [Website](http://zakstrassberg.com)

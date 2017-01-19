@@ -17,7 +17,7 @@ module.exports = {
     console.log(req.body);
     // var info = "SELECT id, email, password " + "FROM users WHERE email = ?" + req.body.email + "?";
 
-    doQuery("SELECT id, email, password " + "FROM users WHERE email = '" + req.body.email + "'", callback);
+    doQuery("SELECT id, email, password, first_name " + "FROM users WHERE email = '" + req.body.email + "'", callback);
     // console.log(info)
     }
 }

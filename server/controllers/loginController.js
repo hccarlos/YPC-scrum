@@ -35,7 +35,11 @@ module.exports = {
           res.redirect("/login");
         }
         else if(passwordCheck){
+          req.session.data = {};
           console.log("password matches password in database");
+          req.session.data.userid = rows[0].id;
+          req.session.data.first_name = rows[0].first_name;
+          console.log(rows, "rowsss")
           res.redirect("/");
         }
       });

@@ -16,20 +16,29 @@ var exps = {
     }
   },
 
-  generate: function(linkName, loggedIn){
+  generate: function(linkName, req){
     var navBar = "";
-    var loggedInKey = (loggedIn === true)?"loggedIn":"notLoggedIn"; //this will memoize two versions of the "partial" to be able to change the sign in link to edit for logged in users.
-
-    if(exps.memo[loggedInKey][linkName] === undefined){
+    var loggedInKey
+    var name
+    if (!req.session.data){
+      name = exps.signInOrEdit.text.notLoggedIn;
+      loggedInKey = "notLoggedIn";
+    }
+    else{
+      loggedInKey = "loggedIn";
+      name = req.session.data.first_name;
+    }
       let links = {
-        home: "",
-        executives: "",
-        events: "",
-        registration: "",
-        blog: "",
-        contact: "",
-        login: "",
-      }
+      home: "",
+      executives: "",
+      events: "",
+      registration: "",
+      blog: "",
+      contact: "",
+      login: "",
+    }
+    if(exps.memo[loggedInKey][linkName] === undefined){
+
 
       links[linkName] = "class='active'";
 
@@ -39,13 +48,16 @@ var exps = {
               +'<li' + links["events"] +'><a href="/events">Events</a></li>'
               +'<li' + links["blog"] +'><a href="/blog">Blog</a></li>'
               +'<li' + links["contact"] +'><a href="/contact">Contact</a></li>'
-              +'<li' + links["registration"] +'><a href="/registration">Join</a></li>'
-              +'<li' + links["login"] +'><a href="' + exps.signInOrEdit.link[loggedInKey] + '">'+ exps.signInOrEdit.text[loggedInKey] +'</a></li>';
-
+                if (!req.session.data){
+                  navBar +='<li' + links["registration"] +'><a href="/registration">Join</a></li>';
+                }
       exps.memo[loggedInKey][linkName] = navBar;
     }
+    var final_navBar = exps.memo[loggedInKey][linkName]
 
-    return exps.memo[loggedInKey][linkName]; 
+    +'<li' + links["login"] +'><a href="' + exps.signInOrEdit.link[loggedInKey] + '">'+ name +'</a></li>';
+
+    return final_navBar; 
   }
 }
 
