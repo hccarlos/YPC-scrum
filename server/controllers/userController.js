@@ -18,7 +18,7 @@ var user = {
     position: "hi",
     company: "hi",
     street: "hi",
-    city: "hi", 
+    city: "hi",
     state: "hi",
     zip: "hi",
     treasury: false,
@@ -34,15 +34,21 @@ module.exports = {
     // console.log("controller function called successfully");
     // var result = models.model_template.test(req, res);
     // console.log(result);
-    res.render("./views/users/edit.ejs", {user:user});
+    models.userModel.getauser(req,res,function(err, rows, fields){
+        console.log(rows);
+        res.render("./views/users/edit.ejs", {user:rows[0]});
+    })
+
   },
   update: function(req, res){
     console.log("\n\n\n EDIT")
     console.log(req.body);
+    models.userModel.update_user_info(req, res, function(err, rows, fields){
+        res.redirect("/edit");
+    })
     // valid session id with req.params.id
     // validation for database update
     // update database
     // redirect to index
-    res.redirect("/user");
   },
 }

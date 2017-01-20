@@ -5,7 +5,7 @@
 </head>
 <body>
 
-<!-- 
+<!--
 
 	to do list
 
@@ -21,8 +21,8 @@
 	<li><a href="/">Sign Out</a></li>
 </ul>
 
-<!-- 
-	need user object from db 
+<!--
+	need user object from db
 	double check all fields to match db
 -->
 
@@ -30,9 +30,9 @@
 
 	<label>Email: <input type="text" name="email" value="<%= user.email %>"></label><br><br>
 
-	<label>First Name: <input type="text" name="first" value="<%= user.first %>"></label><br><br>
+	<label>First Name: <input type="text" name="first_name" value="<%= user.first_name %>"></label><br><br>
 
-	<label>Last Name: <input type="text" name="last" value="<%= user.last %>"></label><br><br>
+	<label>Last Name: <input type="text" name="last_name" value="<%= user.last_name %>"></label><br><br>
 
 	<label>Phone: <input type="text" name="phone" value="<%= user.phone %>"></label><br><br>
 
@@ -44,7 +44,7 @@
 	<label>Street Number: <input type="text" name="street" value="<%= user.street %>"></label><br><br>
 	<label>City: <input type="text" name="city" value="<%= user.city %>"></label><br><br>
 	<label>State: <input type="text" name="state" value="<%= user.state %>"></label><br><br>
-	<label>Zipcode: <input type="text" name="zip" value="<%= user.zip %>"></label><br><br>
+	<label>Zipcode: <input type="text" name="zipcode" value="<%= user.zipcode %>"></label><br><br>
 
 	<label> test:
 	<input type="checkbox" name="test" value="test">
@@ -72,7 +72,7 @@
 	<% } else { %>
 		<label><input type="checkbox" name="committee[events]">Events</label><br>
 	<% } %>
-	
+
 	<% if(user.corporate){ %>
 		<label><input type="checkbox" name="committee[corporate]" checked="checked">Corporate Development & Partnerships</label><br>
 	<% } else { %>
