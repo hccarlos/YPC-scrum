@@ -78,7 +78,7 @@ function onS3Done(e, data) {
   '<td>'+s3Size+'</td>'+
   '<td>'+s3LastModified+'</td>'+
   '<td><a href="'+s3Url+'">'+
-  '<button type="button" name="button">View File</button></a></td>'+
+  '<button type="button" name="button">View</button></a></td>'+
   '<td><button type="button" class="deleteButtons" id="'+s3Key+'">Delete</button></td></tr>';
   $(HTMLtoAppend).appendTo($('table'));
   // now attach event handler
