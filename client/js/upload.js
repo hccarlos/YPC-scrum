@@ -12,15 +12,15 @@ var uploadUrl = '/upload';
 
 $(document).ready(function(){
 
-  console.log("running delete event handler");
+  // console.log("running delete event handler");
   $('.deleteButtons').each(function(index){
-    console.log( index + ": " + $( this ).attr('id') );
+    // console.log( index + ": " + $( this ).attr('id') );
     var deleteButtonID = $( this ).attr('id');
     $(this).on('click', function () {
       let deleteButton = $(this);
       let deleteURL = "/upload/"+deleteButtonID+"/destroy"
       $.post(deleteURL, function(){
-        console.log(deleteButton);
+        // console.log(deleteButton);
         deleteButton.parent().parent().remove();
       });
     });
@@ -36,12 +36,17 @@ window.initS3FileUpload = function($fileInput) {
     paramName: 'file',
     add: s3add,
     dataType: 'xml',
+    replaceFileInput:false,
     progressall: function (e, data) {
       var progress = parseInt(data.loaded / data.total * 100, 10);
       $('#progress .bar').css(
         'width',
         progress + '%'
       );
+      $('#progress .bar').html(
+        progress + '%'
+      );
+
     },
     done: onS3Done
   });
@@ -53,20 +58,25 @@ function s3add(e, data) {
   var filename = data.files[0].name;
   var contentType = data.files[0].type;
   var params = [];
-  $.ajax({
-    url: credentialsUrl,
-    type: 'GET',
-    dataType: 'json',
-    data: {
-      filename: filename,
-      content_type: contentType
-    },
-    success: function(s3Data) {
-      data.url = s3Data.endpoint_url;
-      data.formData = s3Data.params;
-      data.submit();
-    }
-  });
+  data.context = $('<button/>').text('Upload')
+                .appendTo('#inputArea')
+                .click(function () {
+                    data.context = $('<p/>').text('Uploading...').replaceAll($(this));
+                    $.ajax({
+                      url: credentialsUrl,
+                      type: 'GET',
+                      dataType: 'json',
+                      data: {
+                        filename: filename,
+                        content_type: contentType
+                      },
+                      success: function(s3Data) {
+                        data.url = s3Data.endpoint_url;
+                        data.formData = s3Data.params;
+                        data.submit();
+                      }
+                    });
+                });
   return params;
 };
 
@@ -77,11 +87,13 @@ function onS3Done(e, data) {
   var s3LastModified = data.originalFiles[0].lastModifiedDate;
   // console.log("size is " + s3Size);
   // console.log(s3LastModified);
+  data.context.text('Upload finished.');
   $('#progress .bar').css(
     'width',
     0 + '%'
   );
-  
+  $('#progress .bar').html("");
+
   var HTMLtoAppend = '<tr>'+
   '<td>'+s3Key+'</td>'+
   '<td>'+s3Size+'</td>'+
@@ -93,14 +105,9 @@ function onS3Done(e, data) {
   // now attach event handler
   // var deleteButtonID = $( this ).attr('id');
   $('.deleteButtons:last').on('click', function () {
-    console.log("1");
     let deleteButton = $('.deleteButtons:last');
-    console.log($(deleteButton).attr('id'));
-    console.log("2");
     let deleteURL = "/upload/"+s3Key+"/destroy"
-    console.log("3");
     $.post(deleteURL, function(){
-      console.log(deleteButton);
       deleteButton.parent().parent().remove();
     });
   });

@@ -9,14 +9,18 @@
     <style>
     .bar {
       height: 18px;
-      background: green;
+      background: #0073e5;
+      border-radius: 5px;
+      text-align: center;
     }
     </style>
   </head>
   <body>
     <h1>S3 Upload</h1>
     <form>
-      <input id="fileInput" type="file" name="file" />
+      <div id="inputArea">
+        <input id="fileInput" type="file" name="file" />
+      </div>
       <div id="progress">
         <div class="bar" style="width: 0%;"></div>
       </div>
