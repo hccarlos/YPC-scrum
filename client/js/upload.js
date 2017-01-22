@@ -11,6 +11,7 @@ var uploadUrl = '/upload';
 
 
 $(document).ready(function(){
+
   console.log("running delete event handler");
   $('.deleteButtons').each(function(index){
     console.log( index + ": " + $( this ).attr('id') );
@@ -35,6 +36,13 @@ window.initS3FileUpload = function($fileInput) {
     paramName: 'file',
     add: s3add,
     dataType: 'xml',
+    progressall: function (e, data) {
+      var progress = parseInt(data.loaded / data.total * 100, 10);
+      $('#progress .bar').css(
+        'width',
+        progress + '%'
+      );
+    },
     done: onS3Done
   });
 };
@@ -67,12 +75,13 @@ function onS3Done(e, data) {
   var s3Key = $(data.jqXHR.responseXML).find('Key').text();
   var s3Size = data.originalFiles[0].size;
   var s3LastModified = data.originalFiles[0].lastModifiedDate;
-  console.log("size is " + s3Size);
-  console.log(s3LastModified);
-  // Typically, after uploading a file to S3, you want to register that file with
-  // your backend. Remember that we did not persist anything before the upload.
-  // window.location.reload();
-  // $('<a/>').attr('href', s3Url).text('File uploaded at '+s3Url).appendTo($('body'));
+  // console.log("size is " + s3Size);
+  // console.log(s3LastModified);
+  $('#progress .bar').css(
+    'width',
+    0 + '%'
+  );
+  
   var HTMLtoAppend = '<tr>'+
   '<td>'+s3Key+'</td>'+
   '<td>'+s3Size+'</td>'+
