@@ -71,9 +71,14 @@ module.exports = {
 					res.redirect('/registration');
 				}
 				else{
-					req.session.userid = rows.insertId;
-					console.log(req.session.userid, "!!!");
-					res.redirect('/');
+					console.log(rows, "rows from controller");
+					req.session.data = {};
+					// req.session.data.first_name = "test name 1";
+					req.session.data.userid = rows.insertId;
+					models.registrationModel.get1User(req, res, rows.insertId, function(errors, rows2, fields){
+						req.session.data.first_name = rows2[0].first_name;
+						res.redirect('/');
+					})
 				}
 
 			});

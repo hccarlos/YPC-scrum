@@ -19,6 +19,11 @@ module.exports = {
 
 	checkEmail: function(req, res, callback){
 		doQuery("select id from users where users.email = '" + req.body.email + "'", callback);
+	},
+
+	get1User: function(req, res, sessionUserId, callback){
+		var test = `select first_name from users where users.id = ${sessionUserId}`;
+		doQuery(test, callback);
 	}
 }
 

@@ -14,6 +14,7 @@ fs.readdirSync(controllerPath).forEach(function(file) {
 module.exports = function(app){
 	app.post('/dummies/:test', function(req, res){
 
+
 		// I'm testing the info that I'm getting from my dummy Factory
 		// I console.log the body and the params just to make sure that it's
 		// going through
@@ -59,15 +60,16 @@ module.exports = function(app){
 
   //ejs pages
   //the second parameter of navBar.generate represents whether the vistor is logged in or not. This will be implemented soon via session.
-	app.get("/", function(req, res){controllers.pageController.loadPage(req, res, "views/index.ejs", {navBar: navBar.generate("home", false)});});
-	app.get("/executives", function(req, res){controllers.pageController.loadPage(req, res, "views/executives.ejs", {navBar: navBar.generate("executives", false)});});
-	app.get("/events", function(req, res){controllers.pageController.loadPage(req, res, "views/events.ejs", {navBar: navBar.generate("events", false)});});
-	app.get("/blog", function(req, res){controllers.pageController.loadPage(req, res, "views/blog.ejs", {navBar: navBar.generate("blog", false)});});
-	app.get("/contact", function(req, res){controllers.pageController.loadPage(req, res, "views/contact.ejs", {navBar: navBar.generate("contact", false)});});
+	app.get("/", function(req, res){controllers.pageController.loadPage(req, res, "views/index.ejs", {navBar: navBar.generate("home", req)});});
+	app.get("/executives", function(req, res){controllers.pageController.loadPage(req, res, "views/executives.ejs", {navBar: navBar.generate("executives", req)});});
+	app.get("/events", function(req, res){controllers.pageController.loadPage(req, res, "views/events.ejs", {navBar: navBar.generate("events", req)});});
+	app.get("/blog", function(req, res){controllers.pageController.loadPage(req, res, "views/blog.ejs", {navBar: navBar.generate("blog", req)});});
+	app.get("/contact", function(req, res){controllers.pageController.loadPage(req, res, "views/contact.ejs", {navBar: navBar.generate("contact",  req)});});
+  app.get("/edit", function(req, res){controllers.userController.index(req, res);});
 
   //login and registration page routes
-	app.get('/registration', function(req, res){controllers.registrationController.regPage(req, res, {navBar: navBar.generate("registration", false)})});
-  app.get('/login', function(req, res){controllers.loginController.loginPage(req, res, {navBar: navBar.generate("login", false)})});
+	app.get('/registration', function(req, res){controllers.registrationController.regPage(req, res, {navBar: navBar.generate("registration", req)})});
+  app.get('/login', function(req, res){controllers.loginController.loginPage(req, res, {navBar: navBar.generate("login", req)})});
 
 	//login and registration post routes
 	app.post('/loginattempt', controllers.loginController.loginAttempt);

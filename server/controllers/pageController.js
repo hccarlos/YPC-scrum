@@ -11,6 +11,8 @@ var models = requireFolder("models");
 
 module.exports = {
 	loadPage: function(req, res, pageName, data){
+		console.log(req.session, "&&");
+		console.log(req.sessionID, "##")
 		res.render(pageName, data);
 	}
 }

@@ -6,11 +6,24 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/blueimp-file-upload/9.5.7/jquery.fileupload.js"></script>
     <script src="js/upload.js"></script>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <style>
+    .bar {
+      height: 18px;
+      background: #0073e5;
+      border-radius: 5px;
+      text-align: center;
+    }
+    </style>
   </head>
   <body>
     <h1>S3 Upload</h1>
     <form>
-      <input id="fileInput" type="file" name="file" />
+      <div id="inputArea">
+        <input id="fileInput" type="file" name="file" />
+      </div>
+      <div id="progress">
+        <div class="bar" style="width: 0%;"></div>
+      </div>
     </form>
     <hr>
     <table>
@@ -32,5 +45,17 @@
       <% } %>
     </table>
     <hr>
+    <input type="hidden" id="refreshed" value="no">
+    <script type="text/javascript">
+      onload=function(){
+        var e=document.getElementById("refreshed");
+        if(e.value=="no"){
+          e.value="yes";
+        }
+        else{
+          e.value="no";location.reload();
+        }
+      }
+    </script>
   </body>
 </html>
