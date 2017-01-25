@@ -29,6 +29,7 @@ var exps = {
       name = req.session.data.first_name;
     }
       let links = {
+      donate: "",
       home: "",
       executives: "",
       events: "",
@@ -43,7 +44,8 @@ var exps = {
       links[linkName] = " class='active'";
 
       navBar =
-              `<li${links["home"]}><a href="/">Home</a></li>`
+               `<li${links["donate"]}><a href="/donate">Donate</a></li>`
+              +`<li${links["home"]}><a href="/">Home</a></li>`
               +`<li${links["executives"]}><a href="/executives">Executives</a></li>`
               +`<li${links["events"]}><a href="/events">Events</a></li>`
               +`<li${links["blog"]}><a href="/blog">Blog</a></li>`
