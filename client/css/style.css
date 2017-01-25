@@ -94,7 +94,8 @@ h1, h2, h3, h4, h5, h6, figure {
   width: 100%;
   padding: 12px 0;
   z-index: 1001;
-  background: white;
+  background: #9a9696;
+  opacity: 0.7;
   -webkit-transition: 0.5s;
   -o-transition: 0.5s;
   transition: 0.5s;
@@ -141,7 +142,7 @@ h1, h2, h3, h4, h5, h6, figure {
 .fh5co-nav ul li a {
   font-size: 16px;
   padding: 30px 10px;
-  color: black;
+  color: rgba(255, 255, 255, 0.5);
   -webkit-transition: 0.5s;
   -o-transition: 0.5s;
   transition: 0.5s;
@@ -234,11 +235,12 @@ h1, h2, h3, h4, h5, h6, figure {
   box-shadow: 0px 14px 20px -9px rgba(0, 0, 0, 0.75);
 }
 .fh5co-nav ul li.active > a {
-  color: #8a2105;
+  color: #fff;
   position: relative;
 }
 .scrolled .fh5co-nav {
   background: #fff;
+  opacity: 1;
   padding: 10px 0;
   -webkit-box-shadow: 0px 5px 7px -7px rgba(0, 0, 0, 0.15);
   -moz-box-shadow: 0px 5px 7px -7px rgba(0, 0, 0, 0.15);
