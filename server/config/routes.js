@@ -72,7 +72,7 @@ module.exports = function(app){
 	app.get("/blog", function(req, res){controllers.pageController.loadPage(req, res, "views/blog.ejs", {navBar: navBar.generate("blog", req)});});
 	app.get("/contact", function(req, res){controllers.pageController.loadPage(req, res, "views/contact.ejs", {navBar: navBar.generate("contact",  req)});});
   app.get("/edit", function(req, res){controllers.userController.index(req, res);});
-
+  app.get("/donate", function(req, res){controllers.pageController.loadPage(req, res, "views/donate.ejs",{navBar: navBar.generate("donate", req)});});
   //login and registration page routes
 	app.get('/registration', function(req, res){controllers.registrationController.regPage(req, res, {navBar: navBar.generate("registration", req)})});
   app.get('/login', function(req, res){controllers.loginController.loginPage(req, res, {navBar: navBar.generate("login", req)})});
