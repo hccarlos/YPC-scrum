@@ -23,6 +23,12 @@ module.exports = function(app){
 		console.log(req.params.test)
 	});
 
+  app.get('/logout', function(req, res){
+    req.session.destroy(function(err){
+    console.log("popppping yo session");
+    res.redirect('/');
+    });
+  });
 	//testing to see if the whole chain of files works
 	app.get('/test', controllers.controller_template.test);
 
