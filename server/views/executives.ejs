@@ -93,14 +93,14 @@
 					<% for ( executive in  executives )  { %>
 						<div class="col-md-8 col-md-offset-2 animate-box" data-animate-effect="fadeIn">
 							<%= img_tag('img_tag (images/executives/executive.jpg') %>
-							<h1> <%= executives.title %> </h1>
+							<h1> {{ executives.title }} </h1>
 							<h3> {{ executives.name }} </h3>
 							<strong class="role"> {{ executives.role }} </strong>
 							<p class="text-left">  {{ executives.info> }} </p>
 								<ul class="fh5co-social-icons">
 									<li> <%= link_to("Facebook", executive.facebook) %>  <i class="icon-facebook"></i>< </li>
 									<li> <%= link_to("Instagram",  executive.instagram %> <i class="icon-twitter"> </i> </li>
-									<li> <%= link_to(l "Linked In",  executive.linkedin  %>  <i class="icon-linkedin"> </i> </li>
+									<li> <%= link_to("Linked In",  executive.linkedin  %>  <i class="icon-linkedin"> </i> </li>
 							</ul>
 						</div>
 					</div>
