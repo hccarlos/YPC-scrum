@@ -53,9 +53,9 @@ var exps = {
                 }
       exps.memo[loggedInKey][linkName] = navBar;
     }
-    var final_navBar = exps.memo[loggedInKey][linkName]+`<li class='btn btn-primary'><a href="${exps.signInOrEdit.link[loggedInKey]}">${name}</a></li>`;
+    var final_navBar = exps.memo[loggedInKey][linkName]+`<li class='btn btn-primary'><a href="${exps.signInOrEdit.link[loggedInKey]}" id="Sign-in">${name}</a></li>`;
 
-    return final_navBar; 
+    return final_navBar;
   }
 }
 
