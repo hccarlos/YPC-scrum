@@ -17,10 +17,11 @@
   },
   "homepage": "https://github.com/ZakStrassberg/YPC-scrum#readme",
   "dependencies": {
+    "body-parser": "latest",
+    "mongoose": "latest",
     "angular-route": "^1.6.1",
     "aws-sdk": "^2.7.21",
     "bcryptjs": "^2.4.0",
-    "body-parser": "^1.15.2",
     "crypto": "0.0.3",
     "ejs": "^2.5.5",
     "express": "^4.14.0",
