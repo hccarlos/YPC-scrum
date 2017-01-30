@@ -56,5 +56,8 @@ module.exports = {
   },
   destroy: function(req, res){
     // delete from db
+  },
+  editContent: function(req, res) {
+    res.render("./views/admin/content.ejs")
   }
 }

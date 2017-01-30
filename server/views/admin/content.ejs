@@ -1,0 +1,48 @@
+<% include partials/head.ejs %>
+
+<body>
+  <!-- total container -->
+  <div class="container">
+
+    <% include partials/navbar.ejs %>
+
+    <!--
+    This is the admin panel. It lists the blog posts in a table
+  -->
+
+  <!--
+
+  to do list
+
+  -create routes for create/show/edit/delete (RESTful)
+
+  -create link to form for creating a new blog post
+  -create link to sign out
+
+  -create link to edit page
+  -double check format for date created time
+  -create link to confirm delete
+-->
+
+
+
+<h1>Manage Content</h1>
+
+<ul class="nav nav-tabs" role="tablist" data-toggle="tab">
+  <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">Home</a></li>
+  <li role="presentation"><a href="#executives" aria-controls="executives" role="tab" data-toggle="tab">Profile</a></li>
+  <li role="presentation"><a href="#messages" aria-controls="messages" role="tab" data-toggle="tab">Messages</a></li>
+  <li role="presentation"><a href="#settings" aria-controls="settings" role="tab" data-toggle="tab">Settings</a></li>
+</ul>
+
+<!-- Tab panes -->
+<div class="tab-content">
+  <div role="tabpanel" class="tab-pane active" id="home">.1</div>
+  <div role="tabpanel" class="tab-pane" id="executives">..2</div>
+  <div role="tabpanel" class="tab-pane" id="messages">.3.</div>
+  <div role="tabpanel" class="tab-pane" id="settings">.4.</div>
+</div>
+
+</div>
+</body>
+</html>

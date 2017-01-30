@@ -47,6 +47,7 @@ module.exports = function(app){
     app.get('/admin', controllers.adminController.index)
     app.get('/admin/posts/new', controllers.adminController.new)
     app.get('/admin/posts/:id/edit', controllers.adminController.edit)
+    app.get('/admin/content', controllers.adminController.editContent)
     // POST REQUESTS ARE HANDLED BY THEIR NATIVE CONTROLLERS
     app.post('/posts/:id/destroy', controllers.adminController.destroy)
     app.post('/posts/create', controllers.postController.create)
@@ -67,7 +68,7 @@ module.exports = function(app){
   //ejs pages
   //the second parameter of navBar.generate represents whether the vistor is logged in or not. This will be implemented soon via session.
 	app.get("/", function(req, res){controllers.pageController.loadPage(req, res, "views/index.ejs", {navBar: navBar.generate("home", req)});});
-	app.get("/executives", function(req, res){controllers.pageController.loadPage(req, res, "views/executives.ejs", {navBar: navBar.generate("executives", req)});});
+	app.get("/executives", function(req, res){controllers.pageController.loadPage(req, res, "views/executives.ejs", {executives: [], navBar: navBar.generate("executives", req)});});
 	app.get("/events", function(req, res){controllers.pageController.loadPage(req, res, "views/events.ejs", {navBar: navBar.generate("events", req)});});
 	app.get("/blog", function(req, res){controllers.pageController.loadPage(req, res, "views/blog.ejs", {navBar: navBar.generate("blog", req)});});
 	app.get("/contact", function(req, res){controllers.pageController.loadPage(req, res, "views/contact.ejs", {navBar: navBar.generate("contact",  req)});});
