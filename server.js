@@ -16,8 +16,6 @@ app.use(express.static(path.join(__dirname, '/client')));
 app.set('views', path.join(__dirname, './server'));
 app.set('view engine', 'ejs');
 
-console.log(__dirname + '/client');
-
 app.use(session({
   secret: crypto.randomBytes(48).toString("hex"),
   resave: false,
@@ -25,10 +23,10 @@ app.use(session({
   cookie: { secure: false, httpOnly: true}
 }));
 
+require('./server/config/db.js');
 require('./server/config/routes.js')(app);
 
 
-var server = app.listen(port, function()
-{
+var server = app.listen(port, function() {
 	console.log("listening on port", port);
 });

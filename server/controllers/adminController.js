@@ -1,8 +1,12 @@
 //Controller template
 var path = require("path");
+var mongoose = require('mongoose');
+var Content = mongoose.model('Content');
 var htmlPath = path.join(__dirname, "./../../server/");
 var requireFolder = require("./../config/req_folder.js");
 var models = requireFolder("models");
+
+
 
 // temporary global variable to test ejs templating
 var posts = [
@@ -23,7 +27,7 @@ module.exports = {
     // console.log("controller function called successfully");
     // var result = models.model_template.test(req, res);
     // console.log(result);
-    res.render("./views/admin/admin.ejs", {posts:posts});
+    res.render("./views/admin/index.ejs", {posts:posts});
   },
   new: function(req, res){
     // take user to create a new blog post page
@@ -52,5 +56,8 @@ module.exports = {
   },
   destroy: function(req, res){
     // delete from db
+  },
+  editContent: function(req, res) {
+    res.render("./views/admin/content.ejs")
   }
 }
