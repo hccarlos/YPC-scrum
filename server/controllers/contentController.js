@@ -9,11 +9,25 @@ var models = requireFolder("models");
   module.exports = {
     create: function(req, res){
       console.log(req.body)
-      // Content.create(req.body, function(err, content) {
-      //   if (err) {
-      //     console.log("\n\n\n\n!!!!!!!!!!!!!!!!!\n" + err)
-      //   }
-      // })
-      res.redirect('/admin/content#executives')
+      var document = new Content(req.body)
+      document.content = {}
+      for (each in req.body) {
+        if ( each != 'type' ) {
+          console.log("each:", each, req.body[each])
+          document.content[each.split('.')[1]] = req.body[each]
+        }
+
+      }
+
+      console.log("new document: \n" + document)
+      document.save(function(err, content) {
+        if (err) {
+          console.log("\n\n\n\n!!!!!!!!!!!!!!!!!\n" + err)
+        } else {
+          console.log("\n\n\n\n!!!!\n"+content)
+          res.redirect('/admin/content#executives')
+        }
+      })
+
     }
   }

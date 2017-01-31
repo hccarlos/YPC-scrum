@@ -55,8 +55,11 @@ module.exports = {
     // delete from db
   },
   editContent: function(req, res) {
-    res.render("./views/admin/content.ejs", {
-      executives: Content.find({ type: 'executive' })
-    })
+    Content.find({type: 'executive'}, function (err, content) {
+      console.log(content)
+      res.render("./views/admin/content.ejs", {
+        executives: content
+      })
+    });
   }
 }

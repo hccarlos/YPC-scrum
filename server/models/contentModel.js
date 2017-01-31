@@ -1,9 +1,7 @@
 var mongoose = require('mongoose');
 var ContentSchema = new mongoose.Schema({
   type: String,
-  content: {
-   stuff: { type: String, trim: true }
- }
+  content: {}
   // first_name: String,
   // last_name: String,
   // email: String
