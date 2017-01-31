@@ -6,7 +6,7 @@
 
     var url = document.location.toString();
     if (url.match('#')) {
-      $('.nav-tabs a[href=#' + url.split('#')[1] + ']').tab('show');
+      $('.nav-tabs a[href="#' + url.split('#')[1] + '"]').tab('show');
     }
 
     //Change hash for page-reload
@@ -77,9 +77,9 @@
 
           <!-- Text input-->
           <div class="form-group">
-            <label class="col-md-4 control-label" for="content.name">Role</label>
+            <label class="col-md-4 control-label" for="content.role">Role</label>
             <div class="col-md-4">
-              <input id="content.name" name="content.name" type="text" placeholder="President" class="form-control input-md">
+              <input id="content.role" name="content.role" type="text" placeholder="President" class="form-control input-md">
 
             </div>
           </div>
@@ -131,7 +131,7 @@
           <div class="form-group">
             <label class="col-md-4 control-label" for="submit"></label>
             <div class="col-md-4">
-              <button id="submit" name="submit" class="btn btn-primary">Submit</button>
+              <button id="submit" class="btn btn-primary">Submit</button>
             </div>
           </div>
         </fieldset>
