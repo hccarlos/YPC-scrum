@@ -52,6 +52,13 @@ module.exports = function(app){
     app.post('/posts/:id/destroy', controllers.adminController.destroy)
     app.post('/posts/create', controllers.postController.create)
     app.post('/posts/:id/edit', controllers.postController.update)
+    app.post('/admin/content', controllers.contentController.create)
+    app.put('/admin/content/:id', function(req, res) {
+      controllers.contentController.update(req, res)
+    })
+    app.delete('/admin/content/:id', function(req, res) {
+      controllers.contentController.delete(req, res)
+    })
 
     app.get('/s3_credentials', controllers.uploadController.credentials)
     app.get('/upload', controllers.uploadController.index)

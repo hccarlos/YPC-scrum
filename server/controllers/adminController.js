@@ -33,9 +33,6 @@ module.exports = {
     // take user to create a new blog post page
     res.render("./views/admin/posts/create.ejs");
   },
-  create: function(req, res){
-    // adding to db
-  },
   // show: function(req, res){
   //   // temporary global variable posts
   //   var post=posts[req.params.id];
@@ -58,6 +55,8 @@ module.exports = {
     // delete from db
   },
   editContent: function(req, res) {
-    res.render("./views/admin/content.ejs")
+    res.render("./views/admin/content.ejs", {
+      executives: Content.find({ type: 'executive' })
+    })
   }
 }
