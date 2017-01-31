@@ -46,6 +46,12 @@
 		Stripe.setPublishableKey('');
 	</script>
 	</head>
+	<style>
+		.valid_error{
+			color: red !important;
+		}
+
+	</style>
 	<body>
 
 	<div class="fh5co-loader"></div>
@@ -65,9 +71,8 @@
 			</div>
 		</div>
 	</nav>
-	<img style="position: absolute; top: 120px; left: 50px; z-index: 100;" src="https://media.giphy.com/media/TeBpzQZRaBIC4/giphy.gif">
-	<img style="position: absolute; top: 120px; right: 50px; z-index: 100;" src="https://media.giphy.com/media/TeBpzQZRaBIC4/giphy.gif">
-	<header id="fh5co-header" class="fh5co-cover fh5co-cover-sm" role="banner" style="background-image:url(https://puu.sh/tz6JJ/55cf61454a.jpg);" data-stellar-background-ratio="1">
+
+	<header id="fh5co-header" class="fh5co-cover fh5co-cover-sm" role="banner" style="background-image:url(images/banner/donate.jpg);" data-stellar-background-ratio="1">
 		<div class="overlay"></div>
 		<div class="container">
 			<div class="row">
@@ -85,18 +90,90 @@
 	<div id="fh5co-project">
 		<div class="container">
 			<div class="row row-pb-md">
-				<div class="col-md-8 col-md-offset-2 text-left fh5co-heading  animate-box">
+				<div class="col-md-8 col-md-offset-2 text-left animate-box" data-animate-effect="fadeInUp">
+					<div class="fh5co-heading">
+						<span>Support our cause</span>
+						<h2>OUR CHARITY</h2>
+						<p>The VMC Foundation is an independent, nonprofit organization (Federal Tax ID 77-0187890) that raises private donations from the community on behalf of Santa Clara Valley Medical Center (VMC) and the entire Santa Clara Valley Health & Hospital System. The Foundation seeks these funds to purchase equipment and fund programs that improve the quality of care and promote access to medical treatment for all residents of Santa Clara County.</p>
+						<p>The Foundation maintains strict financial controls to ensure funds are used only for purposes as stipulated by the donor.   Donors can restrict funds for a special use, contribute to an already existing fund, or work with Foundation staff to identify the best use of their contribution.</p>
+						<p>VMC is the largest and busiest hospital in the Silicon Valley region, and the only one that provides care to all, regardless of ability to pay. It is owned and operated by the County of Santa Clara.</p>
+					</div>
+				</div>
+			</div>
+			<div class="fh5co-heading">
+			<div class="col-md-8 col-md-offset-2 animate-box">
+					<span>Come join us</span>
+					<h2>DONATE</h2>
+					<br>
+					<form action="#">
+					<div class="row form-group">
+						<div class="col-md-12">
+							<label for="subject">Name on Card</label>
+							<input type="subject" id="name_card" class="form-control" placeholder="Name on Card">
+						</div>
+					</div>
+					<div class="row form-group">
+						<div class="col-md-12">
+							<label for="subject">Card Number</label>
+							<input type="text" id="card_number" class="form-control" placeholder="Card Number">
+						</div>
+					</div>
+					<div class="row form-group">
+						<div class="col-md-4">
+							<label for="subject">CVC</label>
+							<input type="text" id="confirm_password" class="form-control" placeholder="###">
+						</div>
+						<div class="col-md-4">
+							<label for="subject">Expiration</label>
+							<input type="text" id="confirm_password" class="form-control" placeholder="MM">
+						</div>
+						<div class="col-md-4">
+							<label for="subject"></label>
+							<input type="text" id="confirm_password" class="form-control" placeholder="YYYY">
+						</div>
+					</div>
+					<div class="row form-group">
+						<div class="col-md-12">
+							<label for="card_number">Billing Address</label>
+							<input type="text" id="billing_address" class="form-control" placeholder=" Address Line 1">
+						</div>
+					</div>
+					<div class="row form-group">
+						<div class="col-md-12">
+							<label for="card_number"></label>
+							<input type="text" id="billing_address" class="form-control" placeholder="Address Line 2">
+						</div>
+					</div>
+					<div class="row form-group">
+						<div class="col-md-4">
+							<label for="subject">City</label>
+							<input type="text" id="confirm_password" class="form-control" placeholder="City">
+						</div>
+						<div class="col-md-4">
+							<label for="subject">State</label>
+							<input type="text" id="confirm_password" class="form-control" placeholder="State">
+						</div>
+						<div class="col-md-4">
+							<label for="subject">Zip Code</label>
+							<input type="text" id="confirm_password" class="form-control" placeholder="Zip Code">
+						</div>
+					</div>
+					<div class="form-group">
+						<input type="submit" value="Submit Donation" class="btn btn-lg btn-primary">
+					</div>
+				</form>
 					<form action="/your-charge-code" method="POST" id="payment-form">
-					  <span class="payment-errors"></span>
-							<p>donate donate donate donate</p>
-
-							<div class="form-row">
-						    <label>
-						      <span>Full Name On Card</span>
-						      <input type="text" size="20" data-stripe="name">
-						    </label>
-						  </div>
-
+						<div class="row form-group">
+							<div class="col-md-12">
+					  		<span class="payment-errors"></span>
+								<div class="form-row">
+								    <label>
+								      <span>Full Name On Card</span>
+								      <input type="text" size="20" data-stripe="name">
+								    </label>
+							  	</div>
+							</div>
+						</div>
 					  <div class="form-row">
 					    <label>
 					      <span>Card Number</span>
