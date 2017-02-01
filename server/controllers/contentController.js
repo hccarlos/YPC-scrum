@@ -14,7 +14,7 @@ var models = requireFolder("models");
       for (each in req.body) {
         if ( each != 'type' ) {
           console.log("each:", each, req.body[each])
-          document.content[each.split('.')[1]] = req.body[each]
+          document.content[each] = req.body[each]
         }
 
       }
@@ -29,5 +29,6 @@ var models = requireFolder("models");
         }
       })
 
+      console.log(Content.find({type:'executive'}));
     }
   }
