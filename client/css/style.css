@@ -85,6 +85,9 @@ h1, h2, h3, h4, h5, h6, figure {
   color: #fff;
   background: #8a2105;
 }
+.fh5co-nav  .fh5co-social a {
+    color: #8a2105;
+}
 
 .fh5co-nav {
   position: fixed;
@@ -94,8 +97,8 @@ h1, h2, h3, h4, h5, h6, figure {
   width: 100%;
   padding: 12px 0;
   z-index: 1001;
-  background: #9a9696;
-  opacity: 0.7;
+  background: #acaaaa;
+  opacity: 0.5;
   -webkit-transition: 0.5s;
   -o-transition: 0.5s;
   transition: 0.5s;
@@ -142,7 +145,7 @@ h1, h2, h3, h4, h5, h6, figure {
 .fh5co-nav ul li a {
   font-size: 16px;
   padding: 30px 10px;
-  color: rgba(255, 255, 255, 0.5);
+  color: rgba(255, 255, 255, 1);
   -webkit-transition: 0.5s;
   -o-transition: 0.5s;
   transition: 0.5s;
@@ -235,9 +238,10 @@ h1, h2, h3, h4, h5, h6, figure {
   box-shadow: 0px 14px 20px -9px rgba(0, 0, 0, 0.75);
 }
 .fh5co-nav ul li.active > a {
-  color: #fff;
+  color: #8a2105;
   position: relative;
 }
+
 .scrolled .fh5co-nav {
   background: #fff;
   opacity: 1;
@@ -247,6 +251,9 @@ h1, h2, h3, h4, h5, h6, figure {
   box-shadow: 0px 5px 7px -7px rgba(0, 0, 0, 0.15);
 }
 
+.scrolled  .fh5co-nav  .fh5co-social a {
+  color: #8a2105;
+}
 .scrolled .fh5co-nav a {
   color: #000;
 }
@@ -1482,7 +1489,7 @@ h1, h2, h3, h4, h5, h6, figure {
 .fh5co-nav-toggle {
   position: fixed;
   right: 0px;
-  top: 18px;
+  top: 53px;
   z-index: 21;
   padding: 6px 0 0 0;
   display: block;
@@ -1492,9 +1499,10 @@ h1, h2, h3, h4, h5, h6, figure {
   width: 44px;
   z-index: 2001;
   border-bottom: none !important;
+  opacity: .5;
 }
 .scrolled .fh5co-nav-toggle {
-  top: 5px;
+  top: 38px;
 }
 @media screen and (max-width: 990px) {
   .fh5co-nav-toggle {
@@ -1712,5 +1720,12 @@ h1, h2, h3, h4, h5, h6, figure {
   border-top-left-radius: 0px !important;
   border-bottom-left-radius: 0px !important;
 }
+/*navbar socal media */
+.fh5co-social{
 
-/*# sourceMappingURL=style.css.map */
+  color: dark grey;
+}
+.fh5co-nav .top .num, .fh5co-nav .top .fh5co-social {
+  display: inline-block;
+  margin: 0;
+}
