@@ -44,7 +44,7 @@ var exps = {
       links[linkName] = " class='active'";
 
       navBar =
-               `<li${links["donate"]}><a href="/donate" id="Sign-in">Donate</a></li>`
+               `<u><li${links["donate"]}><a href="/donate">Donate</a></li></u>`
               +`<li${links["home"]}><a href="/">Home</a></li>`
               +`<li${links["executives"]}><a href="/executives">Executives</a></li>`
               +`<li${links["events"]}><a href="/events">Events</a></li>`
