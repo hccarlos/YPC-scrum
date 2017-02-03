@@ -37,6 +37,7 @@ module.exports = function(app){
   // show all posts (same as route for '/blog')
   // app.get('/posts/', controllers.postController.index);
   // show specific post
+  
   // THIS STYLING IS BROKEN
   app.get("/posts/:id", function(req, res){controllers.postController.show(req, res, {navBar: navBar.generate("blog", req)});});
 
