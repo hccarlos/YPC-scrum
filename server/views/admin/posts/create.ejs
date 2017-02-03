@@ -1,25 +1,33 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<title>Create a New Blog Post</title>
-</head>
+<% include ../partials/head.ejs %>
+
 <body>
+    <!-- total container -->
+    <div class="container">
 
-<h1>Create a New Blog Post</h1>
-<ul>
-	<li><a href="/admin">Go Back</a></li>
-	<li><a href="/logout">Sign Out</a></li>
-</ul>
+        <% include ../partials/navbar.ejs %>
 
-<form action="/posts" method="POST">
-	<label>Enter Blog Post Title</label><br><br>
-	<input type="text" name="title"><br><br>
-	<label>Enter Blog Post Text</label><br><br>
-	<textarea rows="10" cols="100" name="text"></textarea><br><br>
-	
-	<input type="submit" value="Post">
-</form><br><br>
-<a href="/admin"><button>Go Back</button></a>
+        <h1>Create a New Blog Post</h1>
 
+	<form action="/posts" method="POST">
+	  <div class="form-group">
+	    <label for="blog-title">Blog Post Title</label>
+	    <input type="text" class="form-control" id="blog-title" placeholder="Title" name="title">
+	  </div>
+	  <div class="form-group">
+	    <label for="blog-text">Blog Post Text</label>
+	    <textarea class="form-control" id="blog-text" placeholder="Text" rows="3" name="text"></textarea>
+	  </div>
+	  <div class="form-group">
+	    <label for="exampleInputFile">Attach Image</label>
+	    <input type="file" id="exampleInputFile">
+	    <br>
+<!-- 	    <p class="help-block">Example block-level help text here.</p> -->
+	  </div>
+	  <a class="btn btn-default" href="/admin" role="button">Go Back</a>
+
+
+		<input class="btn btn-success" type="submit" value="Post">
+	</form>
+    </div>
 </body>
 </html>
