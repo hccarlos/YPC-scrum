@@ -29,13 +29,14 @@
         <h1>Admin Panel</h1>
         <ul>
         	<li><a href="/admin/posts/new">Create a new blog post</a></li>
-        	<li><a href="/admin">Sign Out</a></li>
+        	<li><a href="/logout">Sign Out</a></li>
         </ul>
 
         <table class="table">
         	<thead>
         		<th>Post Title</th>
         		<th>Date Created</th>
+                <th>Last Updated</th>
         		<th>Actions</th>
         	</thead>
         	<tbody>
@@ -43,8 +44,9 @@
         		<tr>
         			<td><a href="posts/<%= post.id %>"><%= post.title %></a></td>
         			<td><%= post.created_at %></td>
+                    <td><%= post.updated_at %></td>
         			<!-- Zak wants delete to be a modal -->
-        			<td><a href="/admin/posts/<%= post.id %>/edit">edit</a> | <a href="#">delete</a></td>
+        			<td><a href="/admin/posts/<%= post.id %>/edit">Edit</a> | <a href="/admin/posts/<%= post.id %>/delete">Delete</a></td>
         		</tr>
         	<% } %>
         	</tbody>

@@ -1,3 +1,5 @@
+<!-- This page is broken. Something to do with dependencies -->
+
 <!DOCTYPE HTML>
 <html>
 	<head>
@@ -104,25 +106,6 @@
 					<p>Stay informed with YPC and business partnership news.</p>
 				</div>
 			</div>
-			<!-- TABLE IS OPTIONAL: REMOVE IT IF YOU DON'T WANT IT -->
-	        <table class="table">
-	        	<thead>
-	        		<th>Post Title</th>
-	        		<th>Date Created</th>
-	        	</thead>
-	        	<tbody>
-	        	<!-- for loop goes here -->
-	        	<% for (post of posts){ %>
-	        		<tr>
-	        			<td><a href="posts/<%= post.id %>"><%= post.title %></a></td>
-	        			<td><%= post.created_at %></td>
-	        		</tr>
-	        	<% } %>
-	        	<!-- for loop ends here -->
-	        	</tbody>
-	        </table>
-	        <!-- for loop goes here -->
-	        <% for (post of posts){ %>
 			<div class="row">
 				<div class="col-md-8 col-md-offset-2 animate-box" data-animate-effect="fadeInUp">
 					<div class="fh5co-post">
@@ -133,8 +116,6 @@
 					</div>
 				</div>
 			</div>
-			<% } %>
-			<!-- for loop ends here -->
 		</div>
 	</div>
 
@@ -186,7 +167,7 @@
 			<div class="row copyright">
 				<div class="col-md-12 text-center">
 					<p>
-						<small class="block">Designed & Developed by <a href="https://github.com/ZakStrassberg/YPC-scrum/graphs/contributors" target="_blank">YPC Scrum Team</a></small>
+						<small class="block">Developed by <a href="https://github.com/ZakStrassberg/YPC-scrum/graphs/contributors" target="_blank">YPC Scrum Team</a></small>
 					</p>
 				</div>
 			</div>
@@ -218,3 +199,4 @@
 
 	</body>
 </html>
+
