@@ -3,20 +3,7 @@ var path = require("path");
 var htmlPath = path.join(__dirname, "./../../client/");
 var requireFolder = require("./../config/req_folder.js");
 var models = requireFolder("models");
-
-// temporary global variable to test ejs templating
-// var posts = [
-//       { id:0,
-//         title:"test name 1",
-//         created_at:"test date 1",
-//         text:"yes 1"
-//       },
-//       { id:1,
-//         title:"test name 2",
-//         created_at:"test date 2",
-//         text:"yes 2"}
-//     ];
-
+var session = require("express-session");
 
 module.exports = {
   // GET: show all blog posts on a page
@@ -33,11 +20,28 @@ module.exports = {
   // POST: create a new post
   create: function(req, res){
     console.log("create post");
-    models.postModel.create(req, res, function(err, rows, fields){
-      // need validation
-      console.log("post created");
-    });
-    res.redirect("/admin")
+    console.log("req.body:",req.body);
+    if(req.body.title==="" || req.body.text===""){
+      // errors = {};
+      // // if (req.session.errors === undefined){
+      // if(req.body.title.length < 1){
+      //   errors.title = "title cannot be blank!";
+      // }
+      // if(req.body.text.length < 1){
+      //   errors.text = "text cannot be blank!";
+      // }
+      // console.log(errors);
+      // req.session.errors = {errors};
+      // // }
+      res.redirect("/admin");
+    }
+    else{
+      models.postModel.create(req, res, function(err, posts, fields){
+        console.log(posts);
+        console.log("post created");
+      });
+      res.redirect("/admin");
+    } 
   },
   // GET: show a single blog post (update styling)
   show: function(req, res, navBar){
@@ -61,7 +65,6 @@ module.exports = {
     console.log("destroy post");
     models.postModel.delete(req, res, function(err, post, fields){
       console.log("post deleted");
-      // need validation
     });
     res.redirect("/admin")
   }
