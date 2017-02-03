@@ -35,6 +35,7 @@ var models = requireFolder("models");
       console.log("\n\n\n\n!!!!!!!!\nUPDATING!!!\n")
       // console.log(req.params.id)
       var updates = {};
+      updates.content = {};
       for (each in req.body) {
         if ( each != 'type' ) {
           console.log("each:", each, req.body[each])
