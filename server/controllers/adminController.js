@@ -1,26 +1,10 @@
-//Controller template
+// adminController.js
 var path = require("path");
 var mongoose = require('mongoose');
 var Content = mongoose.model('Content');
 var htmlPath = path.join(__dirname, "./../../server/");
 var requireFolder = require("./../config/req_folder.js");
 var models = requireFolder("models");
-
-
-
-// temporary global variable to test ejs templating
-// var posts = [
-//       { id:0,
-//         title:"test name 1",
-//         created_at:"test date 1",
-//         text:"yes 1"
-//       },
-//       { id:1,
-//         title:"test name 2",
-//         created_at:"test date 2",
-//         text:"yes 2"}
-//     ];
-
 
 module.exports = {
   // GET: take admin to all blog posts

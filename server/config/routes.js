@@ -37,17 +37,9 @@ module.exports = function(app){
   // show all posts (same as route for '/blog')
   // app.get('/posts/', controllers.postController.index);
   // show specific post
-  
+
   // THIS STYLING IS BROKEN
   app.get("/posts/:id", function(req, res){controllers.postController.show(req, res, {navBar: navBar.generate("blog", req)});});
-
-  // app.get('/posts/:id', controllers.postController.show);
-
-  // need route to update db entry
-  app.post('/posts/:id/edit', controllers.postController.update)
-  // this goes to the confirm deletion page (this will be handled via modal on admin page)
-  // this actually removes it from the database
-  app.post('/posts/:id/destroy', controllers.postController.destroy)
 
   // ADMIN ONLY FUNCTIONS:
     // GET REQUESTS ARE HANDLED BY ADMIN CONTROLLER

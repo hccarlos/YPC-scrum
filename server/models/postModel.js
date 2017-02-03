@@ -39,12 +39,3 @@ module.exports = {
     doQuery(test, callback);
   },
 }
-
-
-/*
-
-app.post('/posts/:id/destroy', controllers.adminController.destroy)
-app.post('/posts/create', controllers.postController.create)
-app.post('/posts/:id/edit', controllers.postController.update)
-
-*/

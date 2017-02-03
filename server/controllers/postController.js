@@ -19,6 +19,7 @@ var models = requireFolder("models");
 
 
 module.exports = {
+  // GET: show all blog posts on a page
   index: function(req, res, navBar){
     models.postModel.index(req,res,function(err, posts, fields){
       console.log("This is err:")
@@ -28,6 +29,7 @@ module.exports = {
       res.render("./views/blog.ejs", {posts:posts, navBar: navBar.navBar});
     });
   },
+  // POST: create a new post
   create: function(req, res){
     console.log("create post");
     models.postModel.create(req, res, function(err, rows, fields){
@@ -36,17 +38,14 @@ module.exports = {
     });
     res.redirect("/admin")
   },
+  // GET: show a single blog post (update styling)
   show: function(req, res, navBar){
     models.postModel.show(req,res,function(err, post, fields){
       console.log(post);
       res.render("./views/post.ejs", {post:post[0], navBar: navBar.navBar});
     });
   },
-  // edit: function(req, res){
-  //   // temporary global variable posts
-  //   var post=posts[req.params.id];
-  //   res.render("./partials/posts/edit.ejs", {post:post});
-  // },
+  // POST: update an existing blog post
   update: function(req, res){
     console.log("create post");
     models.postModel.edit(req, res, function(err, post, fields){
@@ -55,6 +54,7 @@ module.exports = {
     });
     res.redirect("/admin")
   },
+  // POST: destroy an existing blog post
   destroy: function(req, res){
     console.log("destroy post");
     models.postModel.delete(req, res, function(err, post, fields){
