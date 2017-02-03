@@ -26,6 +26,7 @@ module.exports = {
       console.log(err)
       console.log("This is posts:");
       console.log(posts);
+      if(posts.length==0){res.redirect("/");}
       res.render("./views/blog.ejs", {posts:posts, navBar: navBar.navBar});
     });
   },
