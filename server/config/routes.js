@@ -34,8 +34,10 @@ module.exports = function(app){
 	//testing to see if the whole chain of files works
 	app.get('/test', controllers.controller_template.test);
 
-  // SHOW POST
-  app.get('/posts/:id', controllers.postController.show)
+  // show all posts (same as route for '/blog')
+  // app.get('/posts/', controllers.postController.index);
+  // show specific post
+  app.get('/posts/:id', controllers.postController.show);
 
   // need route to update db entry
   app.post('/posts/:id/edit', controllers.postController.update)
@@ -46,13 +48,13 @@ module.exports = function(app){
 
   // ADMIN ONLY FUNCTIONS:
     // GET REQUESTS ARE HANDLED BY ADMIN CONTROLLER
-    app.get('/admin', controllers.adminController.index)
+    app.get('/admin', controllers.adminController.index) // shows all posts
     app.get('/admin/posts/new', controllers.adminController.new)
     app.get('/admin/posts/:id/edit', controllers.adminController.edit)
     app.get('/admin/content', controllers.adminController.editContent)
     // POST REQUESTS ARE HANDLED BY THEIR NATIVE CONTROLLERS
     app.post('/posts/:id/destroy', controllers.adminController.destroy)
-    app.post('/posts/create', controllers.postController.create)
+    app.post('/posts', controllers.postController.create)
     app.post('/posts/:id/edit', controllers.postController.update)
     app.post('/admin/content', controllers.contentController.create)
     app.put('/admin/content/:id', function(req, res) {
@@ -83,7 +85,7 @@ module.exports = function(app){
     })
   });
 	app.get("/events", function(req, res){controllers.pageController.loadPage(req, res, "views/events.ejs", {navBar: navBar.generate("events", req)});});
-	app.get("/blog", function(req, res){controllers.pageController.loadPage(req, res, "views/blog.ejs", {navBar: navBar.generate("blog", req)});});
+	app.get("/blog", function(req, res){controllers.postController.index(req, res, {navBar: navBar.generate("blog", req)});});
 	app.get("/contact", function(req, res){controllers.pageController.loadPage(req, res, "views/contact.ejs", {navBar: navBar.generate("contact",  req)});});
   app.get("/edit", function(req, res){controllers.userController.index(req, res);});
   app.get("/donate", function(req, res){controllers.pageController.loadPage(req, res, "views/donate.ejs",{navBar: navBar.generate("donate", req)});});

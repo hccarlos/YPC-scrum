@@ -9,28 +9,29 @@ var models = requireFolder("models");
 
 
 // temporary global variable to test ejs templating
-var posts = [
-      { id:0,
-        title:"test name 1",
-        created_at:"test date 1",
-        text:"yes 1"
-      },
-      { id:1,
-        title:"test name 2",
-        created_at:"test date 2",
-        text:"yes 2"}
-    ];
+// var posts = [
+//       { id:0,
+//         title:"test name 1",
+//         created_at:"test date 1",
+//         text:"yes 1"
+//       },
+//       { id:1,
+//         title:"test name 2",
+//         created_at:"test date 2",
+//         text:"yes 2"}
+//     ];
 
 
 module.exports = {
+  // GET: take admin to all blog posts
   index: function(req, res){
-    // console.log("controller function called successfully");
-    // var result = models.model_template.test(req, res);
-    // console.log(result);
-    res.render("./views/admin/index.ejs", {posts:posts});
+    models.postModel.index(req,res,function(err, posts, fields){
+      console.log(posts);
+      res.render("./views/admin/index.ejs", {posts:posts});
+    });
   },
+  // GET: take user to create a new blog post page
   new: function(req, res){
-    // take user to create a new blog post page
     res.render("./views/admin/posts/create.ejs");
   },
   // show: function(req, res){

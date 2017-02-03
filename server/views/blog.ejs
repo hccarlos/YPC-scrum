@@ -104,32 +104,37 @@
 					<p>Stay informed with YPC and business partnership news.</p>
 				</div>
 			</div>
+			<!-- TABLE IS OPTIONAL: REMOVE IT IF YOU DON'T WANT IT -->
+	        <table class="table">
+	        	<thead>
+	        		<th>Post Title</th>
+	        		<th>Date Created</th>
+	        	</thead>
+	        	<tbody>
+	        	<!-- for loop goes here -->
+	        	<% for (post of posts){ %>
+	        		<tr>
+	        			<td><a href="posts/<%= post.id %>"><%= post.title %></a></td>
+	        			<td><%= post.created_at %></td>
+	        		</tr>
+	        	<% } %>
+	        	<!-- for loop ends here -->
+	        	</tbody>
+	        </table>
+	        <!-- for loop goes here -->
+	        <% for (post of posts){ %>
 			<div class="row">
 				<div class="col-md-8 col-md-offset-2 animate-box" data-animate-effect="fadeInUp">
 					<div class="fh5co-post">
-						<span class="fh5co-date">Feb. 1st</span>
-						<h3><a href="#">Young Professional Council</a></h3>
-						<p>Facilis ipsum reprehenderit nemo molestias. Aut cum mollitia reprehenderit. Eos cumque dicta adipisci architecto culpa amet.</p>
-						<p class="author"><img src="images/person1.jpg"> <cite> Mike Adam</cite></p>
-					</div>
-				</div>
-				<div class="col-md-8 col-md-offset-2 animate-box" data-animate-effect="fadeInUp">
-					<div class="fh5co-post">
-						<span class="fh5co-date">Feb. 15th</span>
-						<h3><a href="#">Young Professional Council</a></h3>
-						<p>Facilis ipsum reprehenderit nemo molestias. Aut cum mollitia reprehenderit. Eos cumque dicta adipisci architecto culpa amet.</p>
-						<p class="author"><img src="images/person1.jpg" > <cite> Mike Adam</cite></p>
-					</div>
-				</div>
-				<div class="col-md-8 col-md-offset-2 animate-box" data-animate-effect="fadeInUp">
-					<div class="fh5co-post">
-						<span class="fh5co-date">Mar. 1st</span>
-						<h3><a href="#">Young Professional Council</a></h3>
-						<p>Facilis ipsum reprehenderit nemo molestias. Aut cum mollitia reprehenderit. Eos cumque dicta adipisci architecto culpa amet.</p>
-						<p class="author"><img src="images/person1.jpg" > <cite> Mike Adam</cite></p>
+						<span class="fh5co-date"><%= post.created_at %></span>
+						<h3><a href="/posts/<%= post.id %>"><%= post.title %></a></h3>
+						<p><%= post.body %></p>
+						<p class="author"><img src="images/person1.jpg"> <cite> IMAGE WILL GO HERE</cite></p>
 					</div>
 				</div>
 			</div>
+			<% } %>
+			<!-- for loop ends here -->
 		</div>
 	</div>
 
