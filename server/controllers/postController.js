@@ -41,7 +41,8 @@ module.exports = {
   // GET: show a single blog post (update styling)
   show: function(req, res, navBar){
     models.postModel.show(req,res,function(err, post, fields){
-      console.log(post);
+      if(post.length==0){res.redirect("/");}
+      console.log("this is post",post);
       res.render("./views/post.ejs", {post:post[0], navBar: navBar.navBar});
     });
   },
