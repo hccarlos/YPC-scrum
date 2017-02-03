@@ -5,13 +5,14 @@ var Content = mongoose.model('Content');
 var htmlPath = path.join(__dirname, "./../../server/");
 var requireFolder = require("./../config/req_folder.js");
 var models = requireFolder("models");
+var session = require("express-session");
 
 module.exports = {
   // GET: take admin to all blog posts
   index: function(req, res){
     models.postModel.index(req,res,function(err, posts, fields){
       console.log(posts);
-      res.render("./views/admin/index.ejs", {posts:posts});
+      res.render("./views/admin/index.ejs", {posts:posts, errors: req.session.errors});
     });
   },
   // GET: take admin to create a new blog post page
