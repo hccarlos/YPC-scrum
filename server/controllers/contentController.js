@@ -30,5 +30,41 @@ var models = requireFolder("models");
       })
 
       console.log(Content.find({type:'executive'}));
+    },
+    update: function(req, res) {
+      console.log("\n\n\n\n!!!!!!!!\nUPDATING!!!\n")
+      // console.log(req.params.id)
+      var updates = {};
+      for (each in req.body) {
+        if ( each != 'type' ) {
+          console.log("each:", each, req.body[each])
+          updates.content[each] = req.body[each]
+        }
+      }
+      console.log(updates)
+      Content.update({_id: req.params.id}, updates, {}, function(err) {
+          if (err) { console.log("\n\n\nERROR!!!!\n"+err); res.send( "ERROR:\n" + err ) }
+          else {
+            res.redirect('/admin/content#executives')
+          }
+        })
+      // })
+      // Content.findOne({_id: req.params.id}, function(err, content) {
+      //   console.log("\nORIGINAL CONTENT:\n"+content)
+      //   for (each in req.body) {
+      //     if ( each != 'type' ) {
+      //       console.log("each:", each, req.body[each])
+      //       content.content[each] = req.body[each]
+      //     }
+      //   }
+        // content.save(function(err) {
+        //   if (err) { console.log("\n\n\nERROR!!!!\n"+err); res.send( "ERROR:\n" + err ) }
+        //   else {
+        //     console.log("\nUPDATED CONTENT:\n"+content)
+        //     res.redirect('/admin/content#executives')
+        //   }
+        // })
+      // })
+
     }
   }

@@ -54,7 +54,7 @@ module.exports = function(app){
     app.post('/posts', controllers.postController.create)
     app.post('/posts/:id/edit', controllers.postController.update)
     app.post('/admin/content', controllers.contentController.create)
-    app.put('/admin/content/:id', function(req, res) {
+    app.post('/admin/content/:id', function(req, res) {
       controllers.contentController.update(req, res)
     })
     app.delete('/admin/content/:id', function(req, res) {
