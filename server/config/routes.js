@@ -37,12 +37,14 @@ module.exports = function(app){
   // show all posts (same as route for '/blog')
   // app.get('/posts/', controllers.postController.index);
   // show specific post
-  app.get('/posts/:id', controllers.postController.show);
+  // THIS STYLING IS BROKEN
+  app.get("/posts/:id", function(req, res){controllers.postController.show(req, res, {navBar: navBar.generate("blog", req)});});
+
+  // app.get('/posts/:id', controllers.postController.show);
 
   // need route to update db entry
   app.post('/posts/:id/edit', controllers.postController.update)
   // this goes to the confirm deletion page (this will be handled via modal on admin page)
-  // app.get('/posts/delete/:id', controllers.postsController.delete)
   // this actually removes it from the database
   app.post('/posts/:id/destroy', controllers.postController.destroy)
 
@@ -51,9 +53,11 @@ module.exports = function(app){
     app.get('/admin', controllers.adminController.index) // shows all posts
     app.get('/admin/posts/new', controllers.adminController.new)
     app.get('/admin/posts/:id/edit', controllers.adminController.edit)
+    // Zak wants this as a modal
+    app.get('/admin/posts/:id/delete', controllers.adminController.delete)
     app.get('/admin/content', controllers.adminController.editContent)
     // POST REQUESTS ARE HANDLED BY THEIR NATIVE CONTROLLERS
-    app.post('/posts/:id/destroy', controllers.adminController.destroy)
+    app.post('/posts/:id/destroy', controllers.postController.destroy)
     app.post('/posts', controllers.postController.create)
     app.post('/posts/:id/edit', controllers.postController.update)
     app.post('/admin/content', controllers.contentController.create)

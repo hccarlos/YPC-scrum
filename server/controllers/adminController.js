@@ -30,30 +30,25 @@ module.exports = {
       res.render("./views/admin/index.ejs", {posts:posts});
     });
   },
-  // GET: take user to create a new blog post page
+  // GET: take admin to create a new blog post page
   new: function(req, res){
     res.render("./views/admin/posts/create.ejs");
   },
-  // show: function(req, res){
-  //   // temporary global variable posts
-  //   var post=posts[req.params.id];
-  //   console.log("\n\n\n")
-  //   console.log(htmlPath)
-  //   res.render("./views/admin/posts/show.ejs", {post:post});
-  // },
+  // GET: take admin to update an existing post page
   edit: function(req, res){
-    console.log("\n\n\n EDIT")
-    // temporary global variable posts
-    var post=posts[req.params.id];
-    res.render("./views/admin/posts/edit.ejs", {post:post});
+    console.log("\n\n\n GET EDIT PAGE");
+    models.postModel.show(req,res,function(err, post, fields){
+      console.log(post);
+      res.render("./views/admin/posts/edit.ejs", {post:post[0]});
+    });
   },
+  // GET: take admin to delete confirm (Zak wants a modal)
   delete: function(req, res){
-    // temporary global variable posts
-    var post=posts[req.params.id];
-    res.render("./views/admin/posts/delete.ejs", {post:post});
-  },
-  destroy: function(req, res){
-    // delete from db
+    console.log("\n\n\n GET DELETE PAGE");
+    models.postModel.show(req,res,function(err, post, fields){
+      console.log(post);
+      res.render("./views/admin/posts/delete.ejs", {post:post[0]});
+    });
   },
   editContent: function(req, res) {
     Content.find({type: 'executive'}, function (err, content) {

@@ -28,13 +28,13 @@ module.exports = {
   },
   // edit a post
   edit: function(req, res, callback){
-    var test = `update users set email="${req.body.email}", first_name="${req.body.first_name}", last_name="${req.body.last_name}", phone="${req.body.phone}", position="${req.body.position}", company="${req.body.company}", street="${req.body.street}", city="${req.body.city}", state="${req.body.state}", zipcode="${req.body.zipcode}" where users.id ="${req.session.data.userid}"`;
+    var test = `update posts set title="${req.body.title}", body="${req.body.text}", updated_at=NOW() WHERE posts.id ="${req.params.id}"`;
     console.log(test);
     doQuery(test, callback);
   },
   // delete a post
   delete: function(req, res, callback){
-    var test = `update users set email="${req.body.email}", first_name="${req.body.first_name}", last_name="${req.body.last_name}", phone="${req.body.phone}", position="${req.body.position}", company="${req.body.company}", street="${req.body.street}", city="${req.body.city}", state="${req.body.state}", zipcode="${req.body.zipcode}" where users.id ="${req.session.data.userid}"`;
+    var test = `DELETE FROM posts WHERE posts.id ="${req.params.id}"`;
     console.log(test);
     doQuery(test, callback);
   },

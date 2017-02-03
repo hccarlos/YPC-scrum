@@ -36,25 +36,31 @@ module.exports = {
     });
     res.redirect("/admin")
   },
-  show: function(req, res){
+  show: function(req, res, navBar){
     models.postModel.show(req,res,function(err, post, fields){
       console.log(post);
-      res.render("./views/admin/posts/show.ejs", {post:post[0]});
+      res.render("./views/post.ejs", {post:post[0], navBar: navBar.navBar});
     });
   },
-  edit: function(req, res){
-    // temporary global variable posts
-    var post=posts[req.params.id];
-    res.render("./partials/posts/edit.ejs", {post:post});
-  },
+  // edit: function(req, res){
+  //   // temporary global variable posts
+  //   var post=posts[req.params.id];
+  //   res.render("./partials/posts/edit.ejs", {post:post});
+  // },
   update: function(req, res){
-  },
-  delete: function(req, res){
-    // temporary global variable posts
-    var post=posts[req.params.id];
-    res.render("./partials/posts/delete.ejs", {post:post});
+    console.log("create post");
+    models.postModel.edit(req, res, function(err, post, fields){
+      console.log("post updated");
+      // need validation
+    });
+    res.redirect("/admin")
   },
   destroy: function(req, res){
-    // delete from db
+    console.log("destroy post");
+    models.postModel.delete(req, res, function(err, post, fields){
+      console.log("post deleted");
+      // need validation
+    });
+    res.redirect("/admin")
   }
 }

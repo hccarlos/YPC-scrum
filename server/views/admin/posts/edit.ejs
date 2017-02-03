@@ -21,13 +21,13 @@
 	<li><a href="/admin">Sign Out</a></li>
 </ul>
 
-<form action="" method="POST">
-	<label>Blog Post Title</label><br><br>
+<form action="/posts/<%= post.id %>/edit" method="POST">
+	<label>Edit Blog Post Title</label><br><br>
 	<input type="text" name="title" value="<%= post.title %>"><br><br>
-	<label>Blog Post Text</label><br><br>
-	<textarea rows="10" cols="100" name="text"><%= post.text %></textarea><br><br>
-	<input type="submit" value="Submit">
-</form>
+	<label>Edit Blog Post Text</label><br><br>
+	<textarea rows="10" cols="100" name="text"><%= post.body %></textarea><br><br>
+	<input type="submit" value="Update">
+</form><br><br>
 	<a href="/admin"><button>Go Back</button></a>
 
 </body>
