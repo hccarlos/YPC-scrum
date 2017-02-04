@@ -12,6 +12,9 @@ module.exports = {
   index: function(req, res){
     models.postModel.index(req,res,function(err, posts, fields){
       console.log(posts);
+      if (!posts) {
+        posts = []
+      }
       res.render("./views/admin/index.ejs", {posts:posts, errors: req.session.errors});
     });
   },
