@@ -1,7 +1,7 @@
 var connection = require('../config/mysql.js');
 
 module.exports = function doQuery(query, callback)
-{ 
+{
     try
     {
         connection.query(query, function(err, rows, fields){

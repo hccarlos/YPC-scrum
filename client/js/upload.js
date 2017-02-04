@@ -59,7 +59,7 @@ function s3add(e, data) {
   var contentType = data.files[0].type;
   var params = [];
   data.context = $('<button/>').text('Upload')
-                .appendTo('#inputArea')
+                .appendTo('.inputArea')
                 .click(function () {
                     data.context = $('<p/>').text('Uploading...').replaceAll($(this));
                     $.ajax({
@@ -114,5 +114,5 @@ function onS3Done(e, data) {
 };
 
 $(function() {
-  initS3FileUpload($('#fileInput'));
+  initS3FileUpload($('.fileInput'));
 });
