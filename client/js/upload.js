@@ -39,11 +39,11 @@ window.initS3FileUpload = function($fileInput) {
     replaceFileInput:false,
     progressall: function (e, data) {
       var progress = parseInt(data.loaded / data.total * 100, 10);
-      $('#progress .bar').css(
+      $('.progress .bar').css(
         'width',
         progress + '%'
       );
-      $('#progress .bar').html(
+      $('.progress .bar').html(
         progress + '%'
       );
 
@@ -58,7 +58,8 @@ function s3add(e, data) {
   var filename = data.files[0].name;
   var contentType = data.files[0].type;
   var params = [];
-  data.context = $('<button/>').text('Upload')
+  data.context = $('<button type="button" class="btn btn-primary">').text('Upload')
+  // data.context = $('<button/>').text('Upload')
                 .appendTo('.inputArea')
                 .click(function () {
                     data.context = $('<p/>').text('Uploading...').replaceAll($(this));
@@ -88,11 +89,14 @@ function onS3Done(e, data) {
   // console.log("size is " + s3Size);
   // console.log(s3LastModified);
   data.context.text('Upload finished.');
-  $('#progress .bar').css(
+  window.setTimeout(function() {
+    data.context.remove();
+}, 5000);
+  $('.progress .bar').css(
     'width',
     0 + '%'
   );
-  $('#progress .bar').html("");
+  $('.progress .bar').html("");
 
   var HTMLtoAppend = '<tr>'+
   '<td>'+s3Key+'</td>'+
@@ -111,6 +115,12 @@ function onS3Done(e, data) {
       deleteButton.parent().parent().remove();
     });
   });
+  var s3Url = $(data.jqXHR.responseXML).find('Location').text();
+  console.log(s3Url);
+  $('<input />').attr('type', 'hidden')
+          .attr('name', "s3Url")
+          .attr('value', s3Url)
+          .appendTo('#createPostForm');
 };
 
 $(function() {

@@ -23,8 +23,10 @@ module.exports = {
   },
   // create a new post
   create: function(req, res, callback){
+    console.log("*************************");
     console.log(req.body);
-    doQuery("insert into posts (title, body, created_at, updated_at) values ('"+ req.body.title + "', '" + req.body.text + "', now(), now())", callback);
+    console.log("*************************");
+    doQuery("insert into posts (title, body, photo_link, created_at, updated_at) values ('"+ req.body.title + "', '" + req.body.text + "', '"+ req.body.s3Url + "', now(), now())", callback);
   },
   // edit a post
   edit: function(req, res, callback){
