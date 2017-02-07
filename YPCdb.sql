@@ -45,6 +45,7 @@ CREATE TABLE IF NOT EXISTS `YPCdb`.`posts` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `title` VARCHAR(255) NULL,
   `body` MEDIUMTEXT NULL,
+  `photo_link` VARCHAR(255) NULL,
   `created_at` DATETIME NULL,
   `updated_at` DATETIME NULL,
   PRIMARY KEY (`id`))
