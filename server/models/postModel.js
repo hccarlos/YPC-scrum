@@ -23,13 +23,24 @@ module.exports = {
   },
   // create a new post
   create: function(req, res, callback){
+
     console.log(req.body);
-    doQuery("insert into posts (title, body, created_at, updated_at) values ('"+ req.body.title + "', '" + req.body.text + "', now(), now())", callback);
+
+    doQuery("insert into posts (title, body, photo_link, created_at, updated_at) values ('"+ req.body.title + "', '" + req.body.text + "', '"+ req.body.s3Url + "', now(), now())", callback);
   },
   // edit a post
   edit: function(req, res, callback){
-    var test = `update posts set title="${req.body.title}", body="${req.body.text}", updated_at=NOW() WHERE posts.id ="${req.params.id}"`;
+    console.log(req.body);
+    if(req.body.s3Url == undefined){
+      console.log("entered here");
+      var test = `update posts set title="${req.body.title}", body="${req.body.text}", photo_link=NULL, updated_at=NOW() WHERE posts.id ="${req.params.id}"`;
+    }
+    else{
+      var test = `update posts set title="${req.body.title}", body="${req.body.text}", photo_link="${req.body.s3Url}", updated_at=NOW() WHERE posts.id ="${req.params.id}"`;
+    }
+    console.log("*************************");
     console.log(test);
+    console.log("*************************");
     doQuery(test, callback);
   },
   // delete a post

@@ -110,7 +110,12 @@
 						<span class="fh5co-date"><%= post.created_at %></span>
 						<h3><a href="/posts/<%= post.id %>"><%= post.title %></a></h3>
 						<p><%= post.body %></p>
-						<p class="author"><img src="images/person1.jpg"> <cite> IMAGE WILL GO HERE</cite></p>
+						<hr>
+						<h3>Photo Gallery</h3>
+						<% if(post.photo_link) { %>
+						<p><img src="<%= post.photo_link %>" alt="#"></p>
+						<% } %>
+						<p class="author"><img src="images/person1.jpg"> <cite> Author </cite></p>
 					</div>
 				</div>
 			</div>
@@ -197,4 +202,3 @@
 
 	</body>
 </html>
-
