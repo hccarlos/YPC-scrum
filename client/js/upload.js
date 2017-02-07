@@ -107,7 +107,6 @@ function onS3Done(e, data) {
   '<td><button type="button" class="deleteButtons" id="'+s3Key+'">Delete</button></td></tr>';
   $(HTMLtoAppend).appendTo($('table'));
   // now attach event handler
-  // var deleteButtonID = $( this ).attr('id');
   $('.deleteButtons:last').on('click', function () {
     let deleteButton = $('.deleteButtons:last');
     let deleteURL = "/upload/"+s3Key+"/destroy"
@@ -115,12 +114,11 @@ function onS3Done(e, data) {
       deleteButton.parent().parent().remove();
     });
   });
-  var s3Url = $(data.jqXHR.responseXML).find('Location').text();
   console.log(s3Url);
   $('<input />').attr('type', 'hidden')
           .attr('name', "s3Url")
           .attr('value', s3Url)
-          .appendTo('#createPostForm');
+          .appendTo('.PostForm');
 };
 
 $(function() {
